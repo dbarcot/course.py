@@ -102,9 +102,13 @@ body {
     margin-top: 0;
 }
 
-/* Add more space above exercise headers */
+/* Style for exercise headers */
 .content-pane h2 {
     margin-top: 40px; /* Increased top margin for h2 within content */
+    background-color: #fffacd; /* Light yellowish background */
+    padding: 10px 15px; /* Add padding around the header text */
+    border-left: 5px solid #ffcc00; /* Optional: Add a left border for emphasis */
+    border-bottom: 1px solid #eee; /* Keep the bottom border */
 }
 
 /* Style for collapsible summary to indicate clickability */
