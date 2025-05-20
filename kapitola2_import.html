@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Tutoriál - Importování modulů</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-</head>
-<body>
-    <div class="tutorial-container">
-        <aside class="navigation-pane">
-            <h2>Kapitoly</h2>
-            <nav>
-                <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
-                        <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
-                        </ul>
-                    </li>
-                    <!-- Další kapitoly budou přidány zde -->
-                </ul>
-            </nav>
-        </aside>
-        <main class="content-pane">
-            <h1>Importování modulů (<code>import</code>)</h1>
-            <p>Python má rozsáhlou standardní knihovnu modulů, které poskytují mnoho užitečných funkcí a nástrojů. Modul je v podstatě soubor s Python kódem (<code>.py</code>), který obsahuje definice funkcí, tříd a proměnných. Abychom mohli tyto prvky z modulu použít ve svém programu, musíme modul nejprve "importovat".</p>
+<h1 id="importovani-modulu">Importování modulů (<code>import</code>)</h1>
+<p>Python má rozsáhlou standardní knihovnu modulů, které poskytují mnoho užitečných funkcí a nástrojů. Modul je v podstatě soubor s Python kódem (<code>.py</code>), který obsahuje definice funkcí, tříd a proměnných. Abychom mohli tyto prvky z modulu použít ve svém programu, musíme modul nejprve "importovat".</p>
 
-            <h3>Základní import pomocí <code>import nazev_modulu</code></h3>
-            <p>Tento způsob importuje celý modul. K prvkům definovaným v modulu pak přistupujeme pomocí tečkové notace: <code>nazev_modulu.nazev_prvku</code>.</p>
-            <pre><code class="language-python">
+<h3 id="zakladni-import">Základní import pomocí <code>import nazev_modulu</code></h3>
+<p>Tento způsob importuje celý modul. K prvkům definovaným v modulu pak přistupujeme pomocí tečkové notace: <code>nazev_modulu.nazev_prvku</code>.</p>
+<pre><code class="language-python">
 # Příklad s modulem 'math', který obsahuje matematické funkce a konstanty
 import math
 
@@ -65,11 +28,11 @@ data_pro_json = {"jmeno": "Karel", "vek": random.randint(20, 60)}
 json_string = json.dumps(data_pro_json, indent=4) # Funkce z modulu json
 print("Data ve formátu JSON:")
 print(json_string)
-            </code></pre>
+</code></pre>
 
-            <h3>Import s přejmenováním pomocí <code>import nazev_modulu as alias</code></h3>
-            <p>Někdy je název modulu příliš dlouhý nebo koliduje s jiným názvem ve vašem kódu. Můžete ho importovat pod jiným, kratším jménem (aliasem).</p>
-            <pre><code class="language-python">
+<h3 id="import-s-prejmenovanim">Import s přejmenováním pomocí <code>import nazev_modulu as alias</code></h3>
+<p>Někdy je název modulu příliš dlouhý nebo koliduje s jiným názvem ve vašem kódu. Můžete ho importovat pod jiným, kratším jménem (aliasem).</p>
+<pre><code class="language-python">
 import math as m # Modul math bude nyní dostupný pod aliasem 'm'
 
 print(m.pi)
@@ -79,11 +42,11 @@ import datetime as dt # Častý alias pro modul datetime
 
 dnes = dt.date.today()
 print(f"Dnešní datum: {dnes}")
-            </code></pre>
+</code></pre>
 
-            <h3>Import konkrétních prvků pomocí <code>from nazev_modulu import prvek1, prvek2</code></h3>
-            <p>Pokud potřebujete z modulu jen několik konkrétních funkcí nebo proměnných, můžete je importovat přímo do aktuálního jmenného prostoru. Pak k nim přistupujete bez nutnosti psát název modulu.</p>
-            <pre><code class="language-python">
+<h3 id="import-konkretnich-prvku">Import konkrétních prvků pomocí <code>from nazev_modulu import prvek1, prvek2</code></h3>
+<p>Pokud potřebujete z modulu jen několik konkrétních funkcí nebo proměnných, můžete je importovat přímo do aktuálního jmenného prostoru. Pak k nim přistupujete bez nutnosti psát název modulu.</p>
+<pre><code class="language-python">
 from math import pi, sqrt, pow
 
 print(pi)       # Přístup přímo k pi
@@ -93,22 +56,14 @@ print(pow(3, 2))  # Přístup přímo k pow
 # Můžete také importovat vše z modulu (obecně se nedoporučuje kvůli možné kolizi názvů)
 # from random import *
 # print(randint(1, 10)) # randint je nyní přímo dostupná
-            </code></pre>
-            <p><strong>Varování:</strong> Použití <code>from modul import *</code> (tzv. "wildcard import") se obecně nedoporučuje pro větší projekty, protože může vést k nejasnostem ohledně toho, odkud pochází určitá funkce nebo proměnná, a může způsobit kolize názvů, pokud různé moduly definují prvky se stejným jménem.</p>
+</code></pre>
+<p><strong>Varování:</strong> Použití <code>from modul import *</code> (tzv. "wildcard import") se obecně nedoporučuje pro větší projekty, protože může vést k nejasnostem ohledně toho, odkud pochází určitá funkce nebo proměnná, a může způsobit kolize názvů, pokud různé moduly definují prvky se stejným jménem.</p>
 
-            <h3>Kde Python hledá moduly?</h3>
-            <p>Python hledá moduly v několika místech v určitém pořadí:</p>
-            <ol>
-                <li>V aktuálním adresáři, kde je spuštěn skript.</li>
-                <li>V adresářích uvedených v proměnné prostředí <code>PYTHONPATH</code> (pokud je nastavena).</li>
-                <li>Ve standardních instalačních adresářích Pythonu (kde je uložena standardní knihovna).</li>
-            </ol>
-            <p>Můžete také vytvářet vlastní moduly (jednoduše soubory <code>.py</code> s vaším kódem) a importovat je do jiných svých skriptů, pokud jsou ve správném umístění.</p>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="script.js"></script>
-</body>
-</html>
+<h3 id="kde-python-hleda-moduly">Kde Python hledá moduly?</h3>
+<p>Python hledá moduly v několika místech v určitém pořadí:</p>
+<ol>
+    <li>V aktuálním adresáři, kde je spuštěn skript.</li>
+    <li>V adresářích uvedených v proměnné prostředí <code>PYTHONPATH</code> (pokud je nastavena).</li>
+    <li>Ve standardních instalačních adresářích Pythonu (kde je uložena standardní knihovna).</li>
+</ol>
+<p>Můžete také vytvářet vlastní moduly (jednoduše soubory <code>.py</code> s vaším kódem) a importovat je do jiných svých skriptů, pokud jsou ve správném umístění.</p>
