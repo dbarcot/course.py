@@ -1,0 +1,372 @@
+<h1 id="kapitola4-3">Kapitola 4.3: Ošetření chyb, moduly a datové struktury - Cvičení</h1>
+<p>V této části si procvičíte pokročilejší témata jako ošetření chyb, práci s moduly a základní datové struktury jako slovníky.</p>
+
+<h2 id="cviceni-15">Cvičení 15: Základní ošetření chyb (try/except)</h2>
+<p><strong>Procvičujeme:</strong> Základní použití bloků <code>try</code> a <code>except</code> pro zachycení výjimek.</p>
+<p><strong>Zadání:</strong> Napište program, který se zeptá uživatele na dvě čísla. Pokuste se je převést na celá čísla a vydělit první druhým. Použijte <code>try</code> a <code>except ValueError</code> pro ošetření případu, kdy uživatel nezadá platné číslo, a <code>except ZeroDivisionError</code> pro ošetření dělení nulou. V případě chyby vypište příslušnou chybovou zprávu.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte try, except ValueError, except ZeroDivisionError
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "10" a "2"):</strong></p>
+<pre>
+Výsledek dělení: 5.0
+</pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "abc" a "2"):</strong></p>
+<pre>
+Chyba: Nezadal jsi platné číslo.
+</pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "10" a "0"):</strong></p>
+<pre>
+Chyba: Nelze dělit nulou!
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+try:
+    cislo1_str = input("Zadej první číslo: ")
+    cislo2_str = input("Zadej druhé číslo: ")
+
+    cislo1 = int(cislo1_str)
+    cislo2 = int(cislo2_str)
+
+    vysledek = cislo1 / cislo2
+    print(f"Výsledek dělení: {vysledek}")
+
+except ValueError:
+    print("Chyba: Nezadal jsi platné číslo.")
+except ZeroDivisionError:
+    print("Chyba: Nelze dělit nulou!")
+</code></pre>
+</details>
+
+<h2 id="cviceni-16">Cvičení 16: Pokročilé ošetření chyb (else a finally)</h2>
+<p><strong>Procvičujeme:</strong> Použití bloků <code>else</code> a <code>finally</code> v konstrukci <code>try-except</code>.</p>
+<p><strong>Zadání:</strong> Rozšiřte program z Cvičení 15. Přidejte blok <code>else</code>, který se provede pouze v případě, že nedošlo k žádné chybě (tj. dělení proběhlo úspěšně). V tomto bloku <code>else</code> můžete například vypsat potvrzení úspěšného výpočtu. Přidejte také blok <code>finally</code>, který se provede vždy na konci, a vypište v něm zprávu "Program dokončen.".</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte try, except, else, finally
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "10" a "2"):</strong></p>
+<pre>
+Výsledek dělení: 5.0
+Výpočet proběhl úspěšně.
+Program dokončen.
+</pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "abc" a "2"):</strong></p>
+<pre>
+Chyba: Nezadal jsi platné číslo.
+Program dokončen.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+try:
+    cislo1_str = input("Zadej první číslo: ")
+    cislo2_str = input("Zadej druhé číslo: ")
+
+    cislo1 = int(cislo1_str)
+    cislo2 = int(cislo2_str)
+
+    vysledek = cislo1 / cislo2
+    print(f"Výsledek dělení: {vysledek}")
+
+except ValueError:
+    print("Chyba: Nezadal jsi platné číslo.")
+except ZeroDivisionError:
+    print("Chyba: Nelze dělit nulou!")
+else:
+    print("Výpočet proběhl úspěšně.")
+finally:
+    print("Program dokončen.")
+</code></pre>
+</details>
+
+<h2 id="cviceni-17">Cvičení 17: Importování modulů (import)</h2>
+<p><strong>Procvičujeme:</strong> Importování celého modulu pomocí příkazu <code>import</code> a přístup k jeho prvkům pomocí tečkové notace.</p>
+<p><strong>Zadání:</strong> Importujte modul <code>math</code>. Vypište hodnotu konstanty Pí z tohoto modulu. Poté vypočtěte a vypište druhou odmocninu z čísla 64 pomocí funkce z modulu <code>math</code>.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Importujte math a použijte math.pi a math.sqrt()
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+Hodnota Pí: 3.141592653589793
+Druhá odmocnina z 64: 8.0
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import math
+
+print(f"Hodnota Pí: {math.pi}")
+print(f"Druhá odmocnina z 64: {math.sqrt(64)}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-18">Cvičení 18: Importování konkrétních prvků (from...import)</h2>
+<p><strong>Procvičujeme:</strong> Importování konkrétních prvků z modulu pomocí příkazu <code>from ... import ...</code>.</p>
+<p><strong>Zadání:</strong> Z modulu <code>random</code> importujte pouze funkci <code>randint</code>. Pomocí této funkce vygenerujte a vypište náhodné celé číslo mezi 1 a 10 (včetně).</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Importujte randint z random a použijte ji
+</code></pre>
+<p><strong>Očekávaný výstup (příklad - číslo se bude lišit při každém spuštění):</strong></p>
+<pre>
+Náhodné číslo mezi 1 a 10: 7
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+from random import randint
+
+nahodne_cislo = randint(1, 10)
+print(f"Náhodné číslo mezi 1 a 10: {nahodne_cislo}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-20">Cvičení 20: Práce se slovníky (vytvoření, přístup, get)</h2>
+<p><strong>Procvičujeme:</strong> Vytvoření slovníku, přístup k hodnotám pomocí klíčů, použití metody <code>get()</code> pro bezpečný přístup.</p>
+<p><strong>Zadání:</strong> Vytvořte slovník s názvem <code>osoba</code>, který bude obsahovat klíče "jmeno", "vek" a "mesto" s příslušnými hodnotami. Vypište jméno osoby ze slovníku pomocí klíče. Poté se pokuste získat hodnotu pro klíč "zamestnani" pomocí metody <code>get()</code> s výchozí hodnotou "Neznámo" a vypište ji.</p>
+<pre><code class="language-python">
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+Jméno: Alena
+Zaměstnání: Neznámo
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+osoba = {
+    "jmeno": "Alena",
+    "vek": 25,
+    "mesto": "Praha"
+}
+
+print(f"Jméno: {osoba['jmeno']}")
+
+# Bezpečný přístup k prvku, který nemusí existovat
+zamestnani = osoba.get("zamestnani", "Neznámo")
+print(f"Zaměstnání: {zamestnani}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-23">Cvičení 23: Vnořené cykly</h2>
+<p><strong>Procvičujeme:</strong> Použití jednoho cyklu uvnitř druhého (vnořené cykly).</p>
+<p><strong>Zadání:</strong> Pomocí vnořených cyklů <code>for</code> vypište malou násobilku (např. pro čísla od 1 do 3). Vnější cyklus bude pro první číslo, vnitřní pro druhé.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte vnořené for cykly
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+1 * 1 = 1
+1 * 2 = 2
+1 * 3 = 3
+2 * 1 = 2
+2 * 2 = 4
+2 * 3 = 6
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+for i in range(1, 4):
+    for j in range(1, 4):
+        vysledek = i * j
+        print(f"{i} * {j} = {vysledek}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-25">Cvičení 25: Práce se soubory (čtení textu)</h2>
+<p><strong>Procvičujeme:</strong> Otevření souboru pro čtení (<code>open()</code> s režimem 'r'), čtení obsahu souboru (např. <code>read()</code> nebo iterace přes řádky), zavření souboru (metoda <code>close()</code> nebo použití <code>with</code>).</p>
+<p><strong>Zadání:</strong> Vytvořte si malý textový soubor (např. <code>muj_text.txt</code>) s několika řádky textu. Napište program, který otevře tento soubor, přečte jeho obsah a vypíše ho na obrazovku. Použijte konstrukci <code>with open(...)</code>, která zajistí automatické zavření souboru.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Vytvořte soubor muj_text.txt ručně nebo v jiném skriptu
+# Poté napište kód pro jeho čtení
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro soubor s obsahem "První řádek\nDruhý řádek"):</strong></p>
+<pre>
+První řádek
+Druhý řádek
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+# Před spuštěním tohoto kódu si vytvořte soubor 'muj_text.txt'
+# s nějakým textem ve stejném adresáři jako váš Python skript.
+
+try:
+    with open("muj_text.txt", "r", encoding="utf-8") as soubor:
+        obsah = soubor.read()
+        print(obsah)
+except FileNotFoundError:
+    print("Chyba: Soubor 'muj_text.txt' nebyl nalezen.")
+except Exception as e:
+    print(f"Nastala chyba při čtení souboru: {e}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-26">Cvičení 26: Práce se soubory (zápis textu)</h2>
+<p><strong>Procvičujeme:</strong> Otevření souboru pro zápis (<code>open()</code> s režimem 'w' nebo 'a'), zápis textu do souboru (metoda <code>write()</code>), zavření souboru (<code>with</code>).</p>
+<p><strong>Zadání:</strong> Napište program, který vytvoří (nebo přepíše, pokud existuje) soubor s názvem <code>novy_soubor.txt</code>. Do tohoto souboru zapište dva různé řádky textu. Použijte konstrukci <code>with open(...)</code>.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte with open() a write()
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+(Program nevypíše nic na obrazovku, ale vytvoří soubor 'novy_soubor.txt' s následujícím obsahem)
+První řádek textu.
+Druhý řádek textu.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+try:
+    with open("novy_soubor.txt", "w", encoding="utf-8") as soubor:
+        soubor.write("První řádek textu.\n")
+        soubor.write("Druhý řádek textu.\n")
+    print("Soubor 'novy_soubor.txt' byl úspěšně vytvořen a zapsán.")
+except Exception as e:
+    print(f"Nastala chyba při zápisu do souboru: {e}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-27">Cvičení 27: Použití modulu math</h2>
+<p><strong>Procvičujeme:</strong> Použití dalších funkcí z modulu <code>math</code>.</p>
+<p><strong>Zadání:</strong> Importujte modul <code>math</code>. Vypočtěte a vypište hodnotu 2 na 5. Poté vypočtěte a vypište sinus úhlu 90 stupňů (nezapomeňte, že funkce <code>math.sin()</code> očekává radiány, budete muset stupně převést).</p>
+<pre><code class="language-python">
+import math
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+2 na 5 je: 32.0
+Sinus 90 stupňů je: 1.0
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import math
+
+print(f"2 na 5 je: {math.pow(2, 5)}")
+
+# Převod stupňů na radiány: stupně * (pi / 180)
+uhhel_v_stupnich = 90
+uhhel_v_radianech = math.radians(uhhel_v_stupnich) # math modul má i funkci radians()
+sinus_uhlu = math.sin(uhhel_v_radianech)
+print(f"Sinus {uhhel_v_stupnich} stupňů je: {sinus_uhlu}")
+
+# Alternativně bez math.radians():
+# uhhel_v_radianech_alt = uhhel_v_stupnich * (math.pi / 180)
+# sinus_uhlu_alt = math.sin(uhhel_v_radianech_alt)
+# print(f"Sinus {uhhel_v_stupnich} stupňů (alt) je: {sinus_uhlu_alt}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-28">Cvičení 28: Použití modulu time</h2>
+<p><strong>Procvičujeme:</strong> Získání aktuálního času a data pomocí modulu <code>time</code>.</p>
+<p><strong>Zadání:</strong> Importujte modul <code>time</code>. Získejte aktuální lokální čas pomocí <code>time.localtime()</code>. Vypište aktuální rok a aktuální hodinu z získaného časového objektu.</p>
+<pre><code class="language-python">
+import time
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad - hodnoty se budou lišit podle aktuálního času):</strong></p>
+<pre>
+Aktuální rok: 2023
+Aktuální hodina: 10
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import time
+
+t = time.localtime()
+aktualni_rok = t.tm_year
+aktualni_hodina = t.tm_hour
+
+print(f"Aktuální rok: {aktualni_rok}")
+print(f"Aktuální hodina: {aktualni_hodina}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-29">Cvičení 29: Použití modulu random</h2>
+<p><strong>Procvičujeme:</strong> Generování náhodných čísel a výběr z posloupnosti pomocí modulu <code>random</code>.</p>
+<p><strong>Zadání:</strong> Importujte modul <code>random</code>. Vygenerujte a vypište náhodné desetinné číslo mezi 0.0 a 1.0. Poté vygenerujte a vypište náhodné celé číslo mezi 10 a 20 (včetně). Nakonec vyberte a vypište náhodný prvek ze seznamu barev.</p>
+<pre><code class="language-python">
+import random
+barvy = ["červená", "modrá", "zelená", "žlutá"]
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad - hodnoty se budou lišit při každém spuštění):</strong></p>
+<pre>
+Náhodné desetinné číslo: 0.75123456789
+Náhodné celé číslo mezi 10 a 20: 15
+Náhodná barva: zelená
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import random
+barvy = ["červená", "modrá", "zelená", "žlutá"]
+
+# Náhodné desetinné číslo mezi 0.0 a 1.0
+nahodne_float = random.random()
+print(f"Náhodné desetinné číslo: {nahodne_float}")
+
+# Náhodné celé číslo mezi a a b (včetně)
+nahodne_int = random.randint(10, 20)
+print(f"Náhodné celé číslo mezi 10 a 20: {nahodne_int}")
+
+# Náhodný výběr z posloupnosti
+nahodna_barva = random.choice(barvy)
+print(f"Náhodná barva: {nahodna_barva}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-30">Cvičení 30: Práce s daty ve formátu JSON (ukládání)</h2>
+<p><strong>Procvičujeme:</strong> Vytvoření Python slovníku, převod slovníku na JSON řetězec (<code>json.dumps()</code>), zápis JSON řetězce do souboru.</p>
+<p><strong>Zadání:</strong> Importujte modul <code>json</code>. Vytvořte Python slovník reprezentující jednoduchá data o knize (např. "nazev", "autor", "rok_vydani"). Převeďte tento slovník na formátovaný JSON řetězec (s odsazením pro lepší čitelnost). Zapište tento JSON řetězec do nového souboru s názvem <code>kniha.json</code>.</p>
+<pre><code class="language-python">
+import json
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+(Program nevypíše nic na obrazovku, ale vytvoří soubor 'kniha.json' s obsahem podobným tomuto)
+{
+    "nazev": "Ukázková kniha",
+    "autor": "Jan Novák",
+    "rok_vydani": 2023
+}
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import json
+
+data_kniha = {
+    "nazev": "Ukázková kniha",
+    "autor": "Jan Novák",
+    "rok_vydani": 2023,
+    "zanry": ["sci-fi", "dobrodružné"] # Příklad složitější struktury
+}
+
+# Převod Python slovníku na JSON řetězec s odsazením (indent=4)
+json_string_kniha = json.dumps(data_kniha, indent=4, ensure_ascii=False) # ensure_ascii=False pro správné zobrazení české diakritiky
+
+# Zápis JSON řetězce do souboru
+try:
+    with open("kniha.json", "w", encoding="utf-8") as soubor:
+        soubor.write(json_string_kniha)
+    print("Soubor 'kniha.json' byl úspěšně vytvořen s JSON daty.")
+except Exception as e:
+    print(f"Nastala chyba při zápisu JSON do souboru: {e}")
+</code></pre>
+</details>
