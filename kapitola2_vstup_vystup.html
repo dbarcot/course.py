@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Tutoriál - Základní vstup/výstup</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-</head>
-<body>
-    <div class="tutorial-container">
-        <aside class="navigation-pane">
-            <h2>Kapitoly</h2>
-            <nav>
-                <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
-                        <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
-                        </ul>
-                    </li>
-                    <!-- Další kapitoly budou přidány zde -->
-                </ul>
-            </nav>
-        </aside>
-        <main class="content-pane">
-            <h1>Základní vstup a výstup</h1>
-            <p>Programy často potřebují komunikovat s uživatelem – buď mu něco sdělit (výstup), nebo od něj získat nějaké informace (vstup).</p>
+<h1 id="vstup-vystup">Základní vstup a výstup</h1>
+<p>Programy často potřebují komunikovat s uživatelem – buď mu něco sdělit (výstup), nebo od něj získat nějaké informace (vstup).</p>
 
-            <h3>Výstup pomocí <code>print()</code></h3>
-            <p>Funkce <code>print()</code> slouží k vypsání textu nebo hodnot proměnných na standardní výstup, což je obvykle obrazovka (konzole).</p>
-            <pre><code class="language-python">
+<h3 id="vystup-print">Výstup pomocí <code>print()</code></h3>
+<p>Funkce <code>print()</code> slouží k vypsání textu nebo hodnot proměnných na standardní výstup, což je obvykle obrazovka (konzole).</p>
+<pre><code class="language-python">
 # Výpis jednoduchého textu (řetězce)
 print("Ahoj, toto je výstup!")
 
@@ -56,12 +19,12 @@ print("Jmenuji se", jmeno, "a je mi", vek, "let.")
 # Můžeme použít tzv. f-stringy (formátované řetězce) pro snazší vkládání proměnných do textu
 print(f"Jmenuji se {jmeno} a je mi {vek} let.")
 # Výstup: Jmenuji se Eva a je mi 30 let.
-            </code></pre>
+</code></pre>
 
-            <h3>Vstup pomocí <code>input()</code></h3>
-            <p>Funkce <code>input()</code> přečte řádek textu, který uživatel zadá z klávesnice, a vrátí ho jako textový řetězec. Můžeme jí dát nepovinný argument – text, který se zobrazí uživateli jako výzva.</p>
-            <p><strong>Důležité:</strong> Funkce <code>input()</code> vždy vrací text (řetězec), i když uživatel zadá čísla. Pokud potřebujeme s tímto vstupem pracovat jako s číslem, musíme ho explicitně převést.</p>
-            <pre><code class="language-python">
+<h3 id="vstup-input">Vstup pomocí <code>input()</code></h3>
+<p>Funkce <code>input()</code> přečte řádek textu, který uživatel zadá z klávesnice, a vrátí ho jako textový řetězec. Můžeme jí dát nepovinný argument – text, který se zobrazí uživateli jako výzva.</p>
+<p><strong>Důležité:</strong> Funkce <code>input()</code> vždy vrací text (řetězec), i když uživatel zadá čísla. Pokud potřebujeme s tímto vstupem pracovat jako s číslem, musíme ho explicitně převést.</p>
+<pre><code class="language-python">
 # Získání jména od uživatele
 jmeno_uzivatele = input("Jak se jmenuješ? ")
 print(f"Ahoj, {jmeno_uzivatele}!")
@@ -80,13 +43,5 @@ print(f"Za rok ti bude {vek_cislo + 1} let.")
 cena_text = input("Zadej cenu produktu (např. 120.50): ")
 cena_float = float(cena_text) # Převod textu na desetinné číslo (float)
 print(f"Cena s DPH (21%) je: {cena_float * 1.21}")
-            </code></pre>
-            <p>Pokud uživatel zadá něco, co nelze převést na požadovaný číselný typ (např. text místo čísla pro <code>int()</code>), program skončí chybou <code>ValueError</code>. Jak takové chyby ošetřovat, si ukážeme později v kapitole o ošetření chyb.</p>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="script.js"></script>
-</body>
-</html>
+</code></pre>
+<p>Pokud uživatel zadá něco, co nelze převést na požadovaný číselný typ (např. text místo čísla pro <code>int()</code>), program skončí chybou <code>ValueError</code>. Jak takové chyby ošetřovat, si ukážeme později v kapitole o ošetření chyb.</p>

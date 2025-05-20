@@ -1,51 +1,14 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Tutoriál - Komentáře</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-</head>
-<body>
-    <div class="tutorial-container">
-        <aside class="navigation-pane">
-            <h2>Kapitoly</h2>
-            <nav>
-                <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
-                        <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
-                        </ul>
-                    </li>
-                    <!-- Další kapitoly budou přidány zde -->
-                </ul>
-            </nav>
-        </aside>
-        <main class="content-pane">
-            <h1>Komentáře v Pythonu</h1>
-            <p>Komentáře jsou části kódu, které Python při spuštění ignoruje. Slouží programátorům k několika účelům:</p>
-            <ul>
-                <li><strong>Vysvětlení kódu:</strong> Pomáhají objasnit, co dělá složitější nebo méně zřejmá část programu.</li>
-                <li><strong>Poznámky pro sebe nebo ostatní:</strong> Můžete si zanechat připomínky, nápady na vylepšení nebo varování.</li>
-                <li><strong>Dočasné "vypnutí" kódu:</strong> Pokud chcete část kódu dočasně deaktivovat (např. při ladění), můžete ji zakomentovat místo mazání.</li>
-            </ul>
+<h1 id="komentare">Komentáře v Pythonu</h1>
+<p>Komentáře jsou části kódu, které Python při spuštění ignoruje. Slouží programátorům k několika účelům:</p>
+<ul>
+    <li><strong>Vysvětlení kódu:</strong> Pomáhají objasnit, co dělá složitější nebo méně zřejmá část programu.</li>
+    <li><strong>Poznámky pro sebe nebo ostatní:</strong> Můžete si zanechat připomínky, nápady na vylepšení nebo varování.</li>
+    <li><strong>Dočasné "vypnutí" kódu:</strong> Pokud chcete část kódu dočasně deaktivovat (např. při ladění), můžete ji zakomentovat místo mazání.</li>
+</ul>
 
-            <h3>Jednořádkové komentáře</h3>
-            <p>V Pythonu jednořádkový komentář začíná znakem mřížky (<code>#</code>). Vše od znaku <code>#</code> až do konce řádku je považováno za komentář.</p>
-            <pre><code class="language-python">
+<h3 id="jedno-radkove-komentare">Jednořádkové komentáře</h3>
+<p>V Pythonu jednořádkový komentář začíná znakem mřížky (<code>#</code>). Vše od znaku <code>#</code> až do konce řádku je považováno za komentář.</p>
+<pre><code class="language-python">
 # Toto je jednořádkový komentář. Python ho úplně přeskočí.
 x = 10  # Toto je také komentář, může být na stejném řádku jako kód.
 # y = 20  Tento řádek kódu se neprovede, protože je zakomentovaný.
@@ -53,12 +16,12 @@ print(x) # Vypíše hodnotu proměnné x
 
 # Příklad z examples/CV2_ovoce_a_zelenina_Barcot_1-33.py
 # #Domácí úkol 2 - ovoce a zelenina <- Toto je komentář na začátku souboru
-            </code></pre>
+</code></pre>
 
-            <h3>Víceřádkové komentáře (Docstringy)</h3>
-            <p>Python nemá speciální syntaxi pro víceřádkové komentáře ve stejném smyslu jako jednořádkové s <code>#</code>. Často se však pro víceřádkové komentáře nebo dokumentační řetězce (tzv. "docstringy") používají řetězce uzavřené do trojitých uvozovek (<code>"""..."""</code> nebo <code>'''...'''</code>).</p>
-            <p>Pokud takový řetězec není přiřazen žádné proměnné a je na začátku modulu, funkce nebo třídy, stává se z něj docstring, který slouží k dokumentaci.</p>
-            <pre><code class="language-python">
+<h3 id="vice-radkove-komentare">Víceřádkové komentáře (Docstringy)</h3>
+<p>Python nemá speciální syntaxi pro víceřádkové komentáře ve stejném smyslu jako jednořádkové s <code>#</code>. Často se však pro víceřádkové komentáře nebo dokumentační řetězce (tzv. "docstringy") používají řetězce uzavřené do trojitých uvozovek (<code>"""..."""</code> nebo <code>'''...'''</code>).</p>
+<p>Pokud takový řetězec není přiřazen žádné proměnné a je na začátku modulu, funkce nebo třídy, stává se z něj docstring, který slouží k dokumentaci.</p>
+<pre><code class="language-python">
 """
 Toto je víceřádkový řetězec,
 který může sloužit jako komentář
@@ -80,19 +43,11 @@ print("Toto se nevypíše.")
 print("Ani toto.")
 '''
 print("Pokračujeme dál.")
-            </code></pre>
-            <p>Pro běžné komentování kódu během vývoje je však preferováno používání <code>#</code> na začátku každého řádku komentáře.</p>
-            <pre><code class="language-python">
+</code></pre>
+<p>Pro běžné komentování kódu během vývoje je však preferováno používání <code>#</code> na začátku každého řádku komentáře.</p>
+<pre><code class="language-python">
 # Toto je preferovaný způsob
 # pro víceřádkový komentář,
 # pokud to není docstring.
-            </code></pre>
-            <p>Dobré komentáře dělají kód srozumitelnějším a snadněji udržovatelným, ale snažte se psát kód tak, aby byl co nejvíce samovysvětlující. Komentujte spíše "proč" něco děláte, než "co" děláte, pokud je to z kódu zřejmé.</p>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="script.js"></script>
-</body>
-</html>
+</code></pre>
+<p>Dobré komentáře dělají kód srozumitelnějším a snadněji udržovatelným, ale snažte se psát kód tak, aby byl co nejvíce samovysvětlující. Komentujte spíše "proč" něco děláte, než "co" děláte, pokud je to z kódu zřejmé.</p>

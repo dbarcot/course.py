@@ -1,46 +1,9 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Tutoriál - Podmíněné příkazy</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-</head>
-<body>
-    <div class="tutorial-container">
-        <aside class="navigation-pane">
-            <h2>Kapitoly</h2>
-            <nav>
-                <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
-                        <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
-                        </ul>
-                    </li>
-                    <!-- Další kapitoly budou přidány zde -->
-                </ul>
-            </nav>
-        </aside>
-        <main class="content-pane">
-            <h1>Podmíněné příkazy (<code>if</code>, <code>elif</code>, <code>else</code>)</h1>
-            <p>Podmíněné příkazy umožňují programu provádět různý kód v závislosti na tom, zda je určitá podmínka pravdivá (<code>True</code>) nebo nepravdivá (<code>False</code>). Jsou základem pro rozhodování v programech.</p>
+<h1 id="podminene-prikazy">Podmíněné příkazy (<code>if</code>, <code>elif</code>, <code>else</code>)</h1>
+<p>Podmíněné příkazy umožňují programu provádět různý kód v závislosti na tom, zda je určitá podmínka pravdivá (<code>True</code>) nebo nepravdivá (<code>False</code>). Jsou základem pro rozhodování v programech.</p>
 
-            <h3>Příkaz <code>if</code></h3>
-            <p>Blok kódu pod příkazem <code>if</code> se provede pouze tehdy, pokud je podmínka za <code>if</code> vyhodnocena jako pravdivá (<code>True</code>).</p>
-            <pre><code class="language-python">
+<h3 id="prikaz-if">Příkaz <code>if</code></h3>
+<p>Blok kódu pod příkazem <code>if</code> se provede pouze tehdy, pokud je podmínka za <code>if</code> vyhodnocena jako pravdivá (<code>True</code>).</p>
+<pre><code class="language-python">
 vek = 20
 if vek >= 18:
     print("Jste dospělý.") # Tento kód se provede, protože 20 >= 18 je True
@@ -48,11 +11,11 @@ if vek >= 18:
 teplota = 5
 if teplota < 10:
     print("Je zima, obleč si bundu!") # Tento kód se provede
-            </code></pre>
+</code></pre>
 
-            <h3>Příkaz <code>else</code></h3>
-            <p>Příkaz <code>else</code> lze použít v kombinaci s <code>if</code>. Blok kódu pod <code>else</code> se provede tehdy, pokud podmínka za <code>if</code> byla nepravdivá (<code>False</code>).</p>
-            <pre><code class="language-python">
+<h3 id="prikaz-else">Příkaz <code>else</code></h3>
+<p>Příkaz <code>else</code> lze použít v kombinaci s <code>if</code>. Blok kódu pod <code>else</code> se provede tehdy, pokud podmínka za <code>if</code> byla nepravdivá (<code>False</code>).</p>
+<pre><code class="language-python">
 vek = 15
 if vek >= 18:
     print("Jste dospělý.")
@@ -64,11 +27,11 @@ if heslo_spravne:
     print("Přístup povolen.")
 else:
     print("Přístup zamítnut! Špatné heslo.") # Tento kód se provede
-            </code></pre>
+</code></pre>
 
-            <h3>Příkaz <code>elif</code> (else if)</h3>
-            <p>Příkaz <code>elif</code> umožňuje testovat více podmínek postupně. Pokud je podmínka za <code>if</code> nepravdivá, zkontroluje se podmínka prvního <code>elif</code>. Pokud i ta je nepravdivá, zkontroluje se další <code>elif</code>, a tak dále. Pokud žádná z podmínek <code>if</code> nebo <code>elif</code> není pravdivá, provede se blok <code>else</code> (pokud je přítomen).</p>
-            <pre><code class="language-python">
+<h3 id="prikaz-elif">Příkaz <code>elif</code> (else if)</h3>
+<p>Příkaz <code>elif</code> umožňuje testovat více podmínek postupně. Pokud je podmínka za <code>if</code> nepravdivá, zkontroluje se podmínka prvního <code>elif</code>. Pokud i ta je nepravdivá, zkontroluje se další <code>elif</code>, a tak dále. Pokud žádná z podmínek <code>if</code> nebo <code>elif</code> není pravdivá, provede se blok <code>else</code> (pokud je přítomen).</p>
+<pre><code class="language-python">
 # Příklad z examples/CV2_ovoce_a_zelenina_Barcot_1-33.py
 ovoce = ["jablko", "hruska", "merunka", "tresen"] # V původním souboru jsou i další
 zelenina = ["mrkev", "celer", "cibule", "rajce"] # V původním souboru jsou i další
@@ -91,9 +54,9 @@ elif skore >= 50:
     print("Známka: Dobře (C)")
 else:
     print("Známka: Nedostatečně (F)")
-            </code></pre>
-            <p>Podmínky mohou být složitější a používat logické operátory jako <code>and</code> (a zároveň), <code>or</code> (nebo), <code>not</code> (negace).</p>
-            <pre><code class="language-python">
+</code></pre>
+<p>Podmínky mohou být složitější a používat logické operátory jako <code>and</code> (a zároveň), <code>or</code> (nebo), <code>not</code> (negace).</p>
+<pre><code class="language-python">
 vek = 25
 ma_ridicsky_prukaz = True
 
@@ -101,12 +64,4 @@ if vek >= 18 and ma_ridicsky_prukaz:
     print("Můžete řídit auto.")
 else:
     print("Nemůžete řídit auto.")
-            </code></pre>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="script.js"></script>
-</body>
-</html>
+</code></pre>

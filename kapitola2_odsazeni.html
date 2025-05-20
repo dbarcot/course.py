@@ -1,48 +1,11 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Tutoriál - Odsazení</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-</head>
-<body>
-    <div class="tutorial-container">
-        <aside class="navigation-pane">
-            <h2>Kapitoly</h2>
-            <nav>
-                <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
-                        <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
-                        </ul>
-                    </li>
-                    <!-- Další kapitoly budou přidány zde -->
-                </ul>
-            </nav>
-        </aside>
-        <main class="content-pane">
-            <h1>Odsazení v Pythonu</h1>
-            <p>Odsazení (počet mezer nebo tabulátorů na začátku řádku) je v Pythonu <strong>extrémně důležité!</strong> Na rozdíl od mnoha jiných programovacích jazyků, kde se bloky kódu (například co patří k podmínce <code>if</code> nebo cyklu <code>for</code>) vyznačují složenými závorkami <code>{ }</code> nebo klíčovými slovy jako <code>begin</code>/<code>end</code>, v Pythonu se k tomuto účelu používá právě odsazení.</p>
-            <p>Všechny řádky kódu, které patří do stejného bloku, musí být odsazeny o stejný počet mezer. Standardní a doporučený způsob je používat <strong>4 mezery</strong> pro každou úroveň odsazení.</p>
+<h1 id="odsazeni">Odsazení v Pythonu</h1>
+<p>Odsazení (počet mezer nebo tabulátorů na začátku řádku) je v Pythonu <strong>extrémně důležité!</strong> Na rozdíl od mnoha jiných programovacích jazyků, kde se bloky kódu (například co patří k podmínce <code>if</code> nebo cyklu <code>for</code>) vyznačují složenými závorkami <code>{ }</code> nebo klíčovými slovy jako <code>begin</code>/<code>end</code>, v Pythonu se k tomuto účelu používá právě odsazení.</p>
+<p>Všechny řádky kódu, které patří do stejného bloku, musí být odsazeny o stejný počet mezer. Standardní a doporučený způsob je používat <strong>4 mezery</strong> pro každou úroveň odsazení.</p>
 
-            <h3>Proč je odsazení důležité?</h3>
-            <p>Python interpret používá odsazení k určení, které příkazy jsou součástí kterého bloku. Pokud odsazení není konzistentní nebo je chybné, program buď nebude fungovat správně, nebo Python vyvolá chybu <code>IndentationError</code>.</p>
+<h3 id="proc-odsazeni-dulezite">Proč je odsazení důležité?</h3>
+<p>Python interpret používá odsazení k určení, které příkazy jsou součástí kterého bloku. Pokud odsazení není konzistentní nebo je chybné, program buď nebude fungovat správně, nebo Python vyvolá chybu <code>IndentationError</code>.</p>
 
-            <pre><code class="language-python">
+<pre><code class="language-python">
 # Příklad správného odsazení
 cislo = 7
 if cislo > 5:
@@ -63,10 +26,10 @@ print("Tento řádek se vykoná vždy, nepatří k žádnému bloku if výše.")
 #     else: # Začátek bloku else
 #         print(f"{i} pejsků jde na výlet a jeden se zaběhl.") # Odsazeno pod else
 # # Konec bloku for (další neodsazený kód by byl mimo cyklus)
-            </code></pre>
+</code></pre>
 
-            <h3>Časté chyby odsazení:</h3>
-            <pre><code class="language-python">
+<h3 id="caste-chyby-odsazeni">Časté chyby odsazení:</h3>
+<pre><code class="language-python">
 # Příklad chybného odsazení (vedlo by k IndentationError)
 
 # Chyba 1: Neočekávané odsazení
@@ -82,14 +45,6 @@ print("Tento řádek se vykoná vždy, nepatří k žádnému bloku if výše.")
 # if True:
 #     print("První řádek bloku")
 #   print("Druhý řádek bloku s jiným odsazením") # Chyba!
-            </code></pre>
-            <p>Většina moderních textových editorů a vývojových prostředí (IDE) vám pomůže se správným odsazováním, například automatickým vložením 4 mezer po stisku klávesy Tab. Je dobré si nastavit editor tak, aby klávesa Tab vkládala mezery místo skutečného znaku tabulátoru, aby se předešlo problémům s kombinováním mezer a tabulátorů (což Python také nemá rád).</p>
-            <p>Správné a konzistentní odsazení nejenže zajišťuje funkčnost kódu v Pythonu, ale také výrazně přispívá k jeho čitelnosti.</p>
-        </main>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-    <script src="script.js"></script>
-</body>
-</html>
+</code></pre>
+<p>Většina moderních textových editorů a vývojových prostředí (IDE) vám pomůže se správným odsazováním, například automatickým vložením 4 mezer po stisku klávesy Tab. Je dobré si nastavit editor tak, aby klávesa Tab vkládala mezery místo skutečného znaku tabulátoru, aby se předešlo problémům s kombinováním mezer a tabulátorů (což Python také nemá rád).</p>
+<p>Správné a konzistentní odsazení nejenže zajišťuje funkčnost kódu v Pythonu, ale také výrazně přispívá k jeho čitelnosti.</p>
