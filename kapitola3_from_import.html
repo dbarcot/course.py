@@ -1,0 +1,48 @@
+<h1 id="from-import">Importování konkrétních prvků (<code>from ... import ...</code>)</h1>
+<p>V kapitole o importování modulů jsme si ukázali základní příkaz <code>import nazev_modulu</code>. Existuje však i jiný způsob, jak importovat pouze konkrétní části modulu (funkce, třídy, proměnné) do vašeho aktuálního jmenného prostoru. K tomu slouží příkaz <code>from nazev_modulu import prvek1, prvek2, ...</code>.</p>
+
+<h3 id="from-import-priklad">Použití <code>from ... import ...</code></h3>
+<p>Při použití tohoto způsobu importu můžete k importovaným prvkům přistupovat přímo, bez nutnosti uvádět název modulu před nimi.</p>
+<pre><code class="language-python">
+# Importujeme konkrétní funkce pi a sqrt z modulu math
+from math import pi, sqrt
+
+print(pi)       # Přístup přímo k pi
+print(sqrt(16)) # Přístup přímo k sqrt (vypíše 4.0)
+
+# Importujeme funkci randint z modulu random
+from random import randint
+
+nahodne_cislo = randint(1, 100) # Přístup přímo k randint
+print(f"Náhodné číslo mezi 1 a 100: {nahodne_cislo}")
+
+# Můžete importovat i více prvků najednou
+from time import localtime, strftime
+
+t = localtime() # Přístup přímo k localtime
+cas_formatovany = strftime("%H:%M:%S", t) # Přístup přímo k strftime
+print(f"Aktuální čas: {cas_formatovany}")
+</code></pre>
+
+<h3 id="from-import-alias">Import s přejmenováním pomocí <code>from ... import ... as alias</code></h3>
+<p>Stejně jako u základního importu, můžete importované prvky přejmenovat pomocí klíčového slova <code>as</code>.</p>
+<pre><code class="language-python">
+# Importujeme funkci sqrt z modulu math a přejmenujeme ji na odmocnina
+from math import sqrt as odmocnina
+
+vysledek = odmocnina(81)
+print(f"Odmocnina z 81 je: {vysledek}") # Vypíše: Odmocnina z 81 je: 9.0
+</code></pre>
+
+<h3 id="from-import-vse">Import všech prvků (<code>from nazev_modulu import *</code>)</h3>
+<p>Můžete také importovat *všechny* veřejné prvky z modulu pomocí hvězdičky (<code>*</code>). Tento způsob se nazývá "wildcard import".</p>
+<pre><code class="language-python">
+# Importuje VŠECHNY veřejné prvky z modulu math
+from math import *
+
+print(pi)
+print(sqrt(49))
+print(cos(0)) # Funkce cos je také součástí modulu math
+</code></pre>
+<p><strong>Varování:</strong> Použití <code>from modul import *</code> se obecně <strong>nedoporučuje</strong> pro větší projekty. Může to vést k nejasnostem, odkud importované prvky pocházejí, a může způsobit kolize názvů, pokud různé moduly definují prvky se stejným jménem. Je lepší importovat buď celý modul (<code>import nazev_modulu</code>) nebo konkrétní prvky, které potřebujete (<code>from nazev_modulu import prvek</code>).</p>
+<p>Příkaz <code>from ... import ...</code> je užitečný, když potřebujete často používat jen několik konkrétních funkcí nebo proměnných z modulu a chcete se vyhnout opakovanému psaní názvu modulu.</p>

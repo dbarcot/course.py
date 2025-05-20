@@ -1,0 +1,40 @@
+<h1 id="pokracovani-cyklu">Příkaz <code>continue</code></h1>
+<p>Příkaz <code>continue</code> se používá uvnitř cyklů (<code>for</code> nebo <code>while</code>). Když Python narazí na <code>continue</code>, přeskočí zbytek kódu v aktuální iteraci cyklu a okamžitě přejde k další iteraci.</p>
+
+<h3 id="continue-v-cyklu-for">Použití <code>continue</code> v cyklu <code>for</code></h3>
+<pre><code class="language-python">
+# Vypíšeme všechna čísla od 0 do 4 kromě čísla 2
+for i in range(5):
+    if i == 2:
+        print("Přeskakuji číslo 2")
+        continue # Přeskočí zbytek těla cyklu pro i=2
+    print(f"Aktuální číslo: {i}")
+
+# Výstup:
+# Aktuální číslo: 0
+# Aktuální číslo: 1
+# Přeskakuji číslo 2
+# Aktuální číslo: 3
+# Aktuální číslo: 4
+</code></pre>
+
+<h3 id="continue-v-cyklu-while">Použití <code>continue</code> v cyklu <code>while</code></h3>
+<p>Stejně jako u cyklu <code>for</code>, <code>continue</code> v cyklu <code>while</code> přeskočí zbytek aktuální iterace a vrátí se na začátek cyklu k vyhodnocení podmínky.</p>
+<pre><code class="language-python">
+# Vypíšeme čísla od 1 do 5, ale přeskočíme číslo 3
+i = 0
+while i < 5:
+    i += 1
+    if i == 3:
+        print("Přeskakuji číslo 3")
+        continue # Přeskočí print(i) pro i=3
+    print(f"Aktuální číslo: {i}")
+
+# Výstup:
+# Aktuální číslo: 1
+# Aktuální číslo: 2
+# Přeskakuji číslo 3
+# Aktuální číslo: 4
+# Aktuální číslo: 5
+</code></pre>
+<p>Příkaz <code>continue</code> je užitečný, když chcete v cyklu přeskočit zpracování pro určité případy, ale nechcete cyklus úplně ukončit (jako by to udělal příkaz <code>break</code>).</p>

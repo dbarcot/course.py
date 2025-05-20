@@ -1,0 +1,42 @@
+<h1 id="dalsi-osetreni-chyb">Další možnosti ošetření chyb (<code>else</code> a <code>finally</code> v <code>try-except</code>)</h1>
+<p>Kromě základní struktury <code>try</code> a <code>except</code>, kterou jsme si ukázali dříve, lze k blokům pro ošetření chyb přidat ještě nepovinné bloky <code>else</code> a <code>finally</code>.</p>
+
+<h3 id="else-v-try-except">Blok <code>else</code> v <code>try-except</code></h3>
+<p>Blok <code>else</code> se provede pouze tehdy, pokud v bloku <code>try</code> <strong>nedošlo k žádné výjimce</strong>. Je to užitečné pro kód, který by se měl spustit jen v případě úspěšného provedení kódu v <code>try</code> bloku.</p>
+<pre><code class="language-python">
+try:
+    cislo_str = input("Zadej celé číslo: ")
+    cislo = int(cislo_str) # Může vyvolat ValueError
+except ValueError:
+    print("Chyba: Nezadal jsi platné celé číslo.")
+else:
+    # Tento blok se provede POUZE pokud v try bloku NENASTALA chyba
+    print(f"Zadal jsi správně číslo: {cislo}.")
+    print("Pokračujeme ve zpracování...")
+    # Zde by byl kód, který závisí na úspěšném převodu vstupu na číslo
+</code></pre>
+
+<h3 id="finally">Blok <code>finally</code></h3>
+<p>Blok <code>finally</code> se provede <strong>vždy</strong>, bez ohledu na to, zda v bloku <code>try</code> došlo k výjimce, zda byla zachycena, nebo ne. Typicky se používá pro "úklidové" operace, které je nutné provést za všech okolností, jako je zavírání souborů nebo uvolňování síťových připojení.</p>
+<pre><code class="language-python">
+soubor = None # Inicializace proměnné
+try:
+    print("Pokouším se otevřít soubor...")
+    # Zde může dojít k chybě (např. oprávnění, plný disk)
+    soubor = open("testovaci_soubor.txt", "w", encoding="utf-8")
+    soubor.write("Testovací zápis.\n")
+    print("Zápis do souboru proběhl úspěšně.")
+    # Uměle vyvoláme chybu pro demonstraci finally
+    # vysledek = 10 / 0
+except FileNotFoundError:
+    print("Chyba: Soubor nelze vytvořit nebo otevřít (FileNotFoundError).")
+except Exception as e:
+    print(f"Nastala jiná chyba: {e}")
+finally:
+    # Tento blok se provede vždy, i když nastala chyba nebo ne
+    print("Blok finally se provádí.")
+    if soubor: # Zkontrolujeme, zda se soubor podařilo otevřít
+        print("Zavírám soubor.")
+        soubor.close()
+</code></pre>
+<p>Kombinací <code>try</code>, <code>except</code>, <code>else</code> a <code>finally</code> můžete vytvářet robustní kód, který dokáže elegantně zpracovávat různé chybové situace a zajistit, že nezbytné úklidové operace budou vždy provedeny.</p>

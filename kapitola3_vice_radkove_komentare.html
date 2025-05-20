@@ -1,0 +1,58 @@
+<h1 id="vice-radkove-komentare">Víceřádkové komentáře a Docstringy</h1>
+<p>V Pythonu se pro víceřádkové komentáře nebo pro dokumentaci kódu (tzv. "docstringy") používají řetězce uzavřené do trojitých uvozovek (buď trojité dvojité uvozovky <code>"""..."""</code> nebo trojité jednoduché uvozovky <code>'''...'''</code>).</p>
+
+<h3 id="vice-radkove-komentare-priklad">Víceřádkové komentáře (ne jako Docstring)</h3>
+<p>Pokud trojitě uvozený řetězec není prvním příkazem v modulu, funkci, třídě nebo metodě, Python ho považuje za běžný víceřádkový řetězec. Pokud tento řetězec není nikam přiřazen, Python ho při provádění kódu v podstatě ignoruje, a proto se často používá jako víceřádkový komentář.</p>
+<pre><code class="language-python">
+"""
+Toto je víceřádkový komentář.
+Může se rozprostírat přes
+několik řádků.
+"""
+
+'''
+I toto je víceřádkový komentář,
+používající jednoduché uvozovky.
+'''
+
+print("Tento řádek se provede.")
+
+"""Tento řetězec na stejném řádku
+se také chová jako komentář, pokud není přiřazen."""
+</code></pre>
+
+<h3 id="docstringy">Docstringy (Dokumentační řetězce)</h3>
+<p>Pokud je trojitě uvozený řetězec prvním příkazem v modulu, funkci, třídě nebo metodě, Python ho speciálně zpracuje jako "docstring" (dokumentační řetězec). Docstringy jsou důležitou součástí dokumentace kódu a jsou přístupné za běhu programu (např. pomocí funkce <code>help()</code> nebo v interaktivním prostředí).</p>
+<pre><code class="language-python">
+def moje_funkce(parametr1, parametr2):
+    """Tento docstring popisuje funkci.
+
+    Vysvětluje, co funkce dělá, jaké má parametry
+    a co vrací.
+
+    Args:
+        parametr1 (int): Popis prvního parametru.
+        parametr2 (str): Popis druhého parametru.
+
+    Returns:
+        bool: Popis návratové hodnoty.
+    """
+    # Zde je tělo funkce
+    print(f"Parametr 1: {parametr1}, Parametr 2: {parametr2}")
+    return True
+
+# Příklad použití docstringu
+# help(moje_funkce) # Vypíše docstring funkce
+
+class MojeTrida:
+    """Docstring pro třídu MojeTrida."""
+
+    def __init__(self, hodnota):
+        """Docstring pro metodu __init__ (konstruktor)."""
+        self.hodnota = hodnota
+
+    def moje_metoda(self):
+        """Docstring pro metodu moje_metoda."""
+        print(f"Hodnota: {self.hodnota}")
+</code></pre>
+<p>Používání docstringů je silně doporučeno pro dokumentaci vašeho kódu, protože pomáhá vám i ostatním rychle pochopit účel a použití různých částí programu.</p>
