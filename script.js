@@ -1,6 +1,7 @@
-// This script handles the collapsible navigation sections.
+// This script handles the collapsible navigation sections and potentially other custom behaviors.
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Collapsible Navigation ---
     // Find all elements with the class 'collapsible-toggle'
     const collapsibleToggles = document.querySelectorAll('.collapsible-toggle');
 
@@ -11,4 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
             toggle.parentElement.classList.toggle('expanded');
         });
     });
+
+    // --- Other Custom Scripts ---
+    // Add any other custom JavaScript logic here, inside the DOMContentLoaded listener.
+
 });

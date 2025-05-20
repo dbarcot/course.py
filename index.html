@@ -114,14 +114,6 @@
                 });
             });
 
-            // Event listeners for collapsible toggles
-            const collapsibleToggles = document.querySelectorAll('.collapsible-toggle');
-            collapsibleToggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    toggle.parentElement.classList.toggle('expanded');
-                });
-            });
-
 
             // Initial load of the first chapter content when the page loads
             loadChapterContent('kapitola1_uvod.html');
