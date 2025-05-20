@@ -102,6 +102,19 @@ body {
     margin-top: 0;
 }
 
+/* Add more space above exercise headers */
+.content-pane h2 {
+    margin-top: 40px; /* Increased top margin for h2 within content */
+}
+
+/* Style for collapsible summary to indicate clickability */
+details summary {
+    cursor: pointer; /* Change cursor to hand on hover */
+    /* You might want to add some padding or styling here too */
+    padding: 5px 0; /* Add some padding for easier clicking */
+    outline: none; /* Remove default outline on focus */
+}
+
 
 /* Styling for code blocks (enhanced by Highlight.js) */
 pre {
