@@ -14,21 +14,21 @@
             <h2>Kapitoly</h2>
             <nav>
                 <ul>
-                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li><a href="#" data-chapter="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
                     <li>
                         Kapitola 2: Základní konstrukce
                         <ul>
-                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
-                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
-                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
-                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
-                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
-                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
-                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
-                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
-                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
-                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
-                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                            <li><a href="#" data-chapter="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="#" data-chapter="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="#" data-chapter="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="#" data-chapter="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="#" data-chapter="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="#" data-chapter="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="#" data-chapter="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="#" data-chapter="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="#" data-chapter="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="#" data-chapter="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="#" data-chapter="kapitola2_import.html">Importování modulů</a></li>
                         </ul>
                     </li>
                     <!-- Další kapitoly budou přidány zde -->
@@ -36,10 +36,14 @@
             </nav>
         </aside>
         <main class="content-pane">
-            <h1>Vítejte v Python Tutoriálu!</h1>
-            <p>Tento interaktivní tutoriál vás provede základy programování v jazyce Python.</p>
-            <p>Vyberte si kapitolu z navigačního menu vlevo a začněte se učit.</p>
-            <p>Hodně štěstí!</p>
+            <!-- The chapter content will be loaded here dynamically -->
+            <div id="chapter-content">
+                <!-- Initial content or loading message -->
+                <h1>Vítejte v Python Tutoriálu!</h1>
+                <p>Tento interaktivní tutoriál vás provede základy programování v jazyce Python.</p>
+                <p>Vyberte si kapitolu z navigačního menu vlevo a začněte se učit.</p>
+                <p>Hodně štěstí!</p>
+            </div>
         </main>
     </div>
 
@@ -47,9 +51,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <!-- Optionally, load specific languages for Highlight.js if not using the common pack -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
     <!-- Your custom JavaScript file -->
     <script src="script.js"></script>
+    <script>
+        // Function to load chapter content
+        async function loadChapterContent(chapterUrl, sectionId = null) {
+            try {
+                const response = await fetch(chapterUrl);
+                if (!response.ok) {
+                    throw new Error(`Could not load ${chapterUrl}: ${response.statusText}`);
+                }
+                const content = await response.text();
+                document.getElementById('chapter-content').innerHTML = content;
+
+                // Apply syntax highlighting to the newly loaded content
+                document.querySelectorAll('#chapter-content pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+
+                // Scroll to the specific section if sectionId is provided
+                if (sectionId) {
+                    const sectionElement = document.getElementById(sectionId);
+                    if (sectionElement) {
+                        sectionElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                } else {
+                     // Scroll to the top of the content pane for new chapter loads
+                    document.querySelector('.content-pane').scrollTop = 0;
+                }
+
+            } catch (error) {
+                console.error("Error loading chapter content:", error);
+                document.getElementById('chapter-content').innerHTML = "<p>Chyba při načítání obsahu kapitoly.</p>";
+            }
+        }
+
+        // Add event listeners to navigation links
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.navigation-pane a[data-chapter]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default link behavior
+                    const chapterUrl = link.getAttribute('data-chapter');
+                    // Check if the link has a section ID (e.g., #section-id)
+                    const urlParts = chapterUrl.split('#');
+                    const baseUrl = urlParts[0];
+                    const sectionId = urlParts[1] || null;
+
+                    // If clicking a link within the *currently loaded* chapter, just scroll
+                    const currentChapter = document.getElementById('chapter-content').dataset.currentChapter;
+                    if (currentChapter === baseUrl && sectionId) {
+                         const sectionElement = document.getElementById(sectionId);
+                         if (sectionElement) {
+                             sectionElement.scrollIntoView({ behavior: 'smooth' });
+                         }
+                    } else {
+                        // Load new chapter content
+                        document.getElementById('chapter-content').dataset.currentChapter = baseUrl; // Store current chapter URL
+                        loadChapterContent(chapterUrl, sectionId);
+                    }
+                });
+            });
+
+            // Initial load of the first chapter content when the page loads
+            loadChapterContent('kapitola1_uvod.html');
+        });
+    </script>
 </body>
 </html>
