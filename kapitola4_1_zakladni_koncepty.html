@@ -1,0 +1,143 @@
+<h1 id="kapitola4-1">Kapitola 4.1: Základní koncepty - Cvičení</h1>
+<p>V této části si procvičíte základní stavební kameny programování v Pythonu, jako je výstup, proměnné, vstup, komentáře, odsazení a podmíněné příkazy.</p>
+
+<h2 id="cviceni-1">Cvičení 1: Váš první program a výstup</h2>
+<p><strong>Procvičujeme:</strong> Funkce <code>print()</code>, základní výstup textu.</p>
+<p><strong>Zadání:</strong> Napište program, který na obrazovku vypíše jednoduchý pozdrav, například "Ahoj, Python světe!".</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+# Toto je jen příklad, jak použít print
+print("Nějaký text")
+</code></pre>
+<details>
+<summary>Očekávaný výstup</summary>
+<pre>
+Ahoj, Python světe!
+</pre>
+</details>
+
+<h2 id="cviceni-2">Cvičení 2: Práce s proměnnými a datovými typy</h2>
+<p><strong>Procvičujeme:</strong> Definování proměnných, přiřazení hodnot, základní datové typy (řetězec, číslo), výpis proměnných pomocí <code>print()</code>.</p>
+<p><strong>Zadání:</strong> Vytvořte proměnnou <code>jmeno</code> a přiřaďte jí své jméno jako textový řetězec. Vytvořte proměnnou <code>vek</code> a přiřaďte jí svůj věk jako celé číslo. Poté pomocí funkce <code>print()</code> vypište větu, která bude obsahovat hodnoty obou proměnných (např. "Jmenuji se [Vaše jméno] a je mi [Váš věk] let.").</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+prvni_promenna = "něco"
+druha_promenna = 10
+print(prvni_promenna, druha_promenna)
+</code></pre>
+<details>
+<summary>Očekávaný výstup (příklad pro jméno "Petr" a věk 30)</summary>
+<pre>
+Jmenuji se Petr a je mi 30 let.
+</pre>
+</details>
+
+<h2 id="cviceni-3">Cvičení 3: Získání a převod vstupu od uživatele</h2>
+<p><strong>Procvičujeme:</strong> Funkce <code>input()</code>, získání vstupu od uživatele, převod textového vstupu na číslo (<code>int()</code> nebo <code>float()</code>).</p>
+<p><strong>Zadání:</strong> Napište program, který se zeptá uživatele na jeho oblíbené číslo. Získaný vstup převeďte na celé číslo a uložte do proměnné. Poté vypište zprávu, která potvrdí zadané číslo (např. "Tvoje oblíbené číslo je [zadané číslo].").</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+text_od_uzivatele = input("Zadej něco: ")
+cislo_z_textu = int(text_od_uzivatele)
+print(cislo_z_textu)
+</code></pre>
+<details>
+<summary>Očekávaný výstup (příklad pro vstup "42")</summary>
+<pre>
+Tvoje oblíbené číslo je 42.
+</pre>
+</details>
+
+<h2 id="cviceni-4">Cvičení 4: Komentáře a čitelnost kódu</h2>
+<p><strong>Procvičujeme:</strong> Použití jednořádkových komentářů (<code>#</code>) pro vysvětlení kódu.</p>
+<p><strong>Zadání:</strong> Vezměte kód z Cvičení 3 a přidejte k němu komentáře, které vysvětlí, co jednotlivé řádky kódu dělají (získání vstupu, převod na číslo, výpis). Snažte se, aby komentáře byly jasné a pomohly někomu jinému pochopit váš kód.</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+# Toto je komentář
+x = 10 # Komentář na konci řádku
+</code></pre>
+<details>
+<summary>Očekávaný výstup</summary>
+<pre>
+(Výstup programu bude stejný jako v Cvičení 3, ale kód bude lépe dokumentovaný.)
+</pre>
+</details>
+
+<h2 id="cviceni-5">Cvičení 5: Procvičování odsazení</h2>
+<p><strong>Procvičujeme:</strong> Správné odsazení bloků kódu v Pythonu.</p>
+<p><strong>Zadání:</strong> Následující kód je napsán bez správného odsazení. Opravte odsazení tak, aby program fungoval správně a vypisoval zprávy podle logiky podmíněných příkazů.</p>
+<pre><code class="language-python">
+# Kód s chybným odsazením - OPRAVTE HO!
+cislo = 15
+if cislo > 10:
+print("Číslo je větší než 10.")
+if cislo > 20:
+print("Číslo je větší než 20.")
+else:
+print("Číslo není větší než 20.")
+print("Konec programu.")
+</code></pre>
+<details>
+<summary>Očekávaný výstup (po opravě odsazení)</summary>
+<pre>
+Číslo je větší než 10.
+Číslo není větší než 20.
+Konec programu.
+</pre>
+</details>
+
+<h2 id="cviceni-6">Cvičení 6: Rozhodování s if a else</h2>
+<p><strong>Procvičujeme:</strong> Použití příkazů <code>if</code> a <code>else</code> pro jednoduché rozhodování.</p>
+<p><strong>Zadání:</strong> Napište program, který se zeptá uživatele na věk. Pokud je věk 18 nebo více, vypište "Jsi dospělý.". V opačném případě (pokud je věk menší než 18) vypište "Nejsi ještě dospělý.". Nezapomeňte převést vstup na číslo.</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+podminka = True
+if podminka:
+    print("Platí.")
+else:
+    print("Neplatí.")
+</code></pre>
+<details>
+<summary>Očekávaný výstup (příklad pro vstup "20")</summary>
+<pre>
+Jsi dospělý.
+</pre>
+</details>
+<details>
+<summary>Očekávaný výstup (příklad pro vstup "16")</summary>
+<pre>
+Nejsi ještě dospělý.
+</pre>
+</details>
+
+<h2 id="cviceni-7">Cvičení 7: Více možností s elif</h2>
+<p><strong>Procvičujeme:</strong> Použití příkazů <code>if</code>, <code>elif</code> a <code>else</code> pro rozhodování mezi více možnostmi.</p>
+<p><strong>Zadání:</strong> Napište program, který se zeptá uživatele na známku (číslo 1-5). Podle známky vypište slovní hodnocení:
+- 1: "Výborně"
+- 2: "Chvalitebně"
+- 3: "Dobře"
+- 4: "Dostatečně"
+- 5: "Nedostatečně"
+Pokud uživatel zadá jiné číslo, vypište "Neplatná známka."</p>
+<p><strong>Příklad (není řešení):</strong></p>
+<pre><code class="language-python">
+hodnota = 5
+if hodnota == 1:
+    print("Jedna")
+elif hodnota == 2:
+    print("Dva")
+else:
+    print("Jiné")
+</code></pre>
+<details>
+<summary>Očekávaný výstup (příklad pro vstup "2")</summary>
+<pre>
+Chvalitebně
+</pre>
+</details>
+<details>
+<summary>Očekávaný výstup (příklad pro vstup "6")</summary>
+<pre>
+Neplatná známka.
+</pre>
+</details>
