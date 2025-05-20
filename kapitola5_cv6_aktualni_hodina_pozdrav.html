@@ -1,0 +1,37 @@
+<h1 id="priklad-aktualni-hodina-pozdrav">Příklad: Aktuální hodina a pozdrav (CV6_aktualni_hodina_+_pozdrav_Barcot_1-33.py)</h1>
+<p>Tento program ukazuje, jak pracovat s aktuálním časem a datem pomocí modulu <code>time</code> a jak na základě denní doby vypsat vhodný pozdrav pomocí podmíněných příkazů.</p>
+<pre><code class="language-python">
+import time # Import modulu time pro práci s časem
+
+# Definice seznamů pro názvy dnů v týdnu a měsíců (v češtině)
+dny = ["pondělí", "úterý", "středa", "čtvrtek", "pátek", "sobota", "neděle"]
+mesice = ["ledna", "února", "března", "dubna", "května", "června",
+          "července", "srpna", "září", "října", "listopadu", "prosince"]
+
+# Získání aktuálního lokálního času jako strukturovaného objektu
+t = time.localtime()
+
+# Získání konkrétních informací z časového objektu 't'
+hodina = t.tm_hour        # Aktuální hodina (0-23)
+den_v_tydnu = dny[t.tm_wday] # Název dne v týdnu (tm_wday je index 0-6)
+den = t.tm_mday           # Den v měsíci (1-31)
+mesic = mesice[t.tm_mon - 1] # Název měsíce (tm_mon je 1-12, index seznamu je 0-11)
+rok = t.tm_year           # Rok
+cas = time.strftime("%H:%M", t) # Formátování času na řetězec "HH:MM"
+
+# Určení pozdravu na základě aktuální hodiny pomocí podmíněných příkazů
+if 0 <= hodina <= 5:
+    pozdrav = "Už jsi měl/a být v posteli!"
+elif 6 <= hodina <= 11:
+    pozdrav = "Dobré ráno!"
+elif 12 <= hodina <= 17:
+    pozdrav = "Dobré odpoledne!"
+elif 18 <= hodina <= 21:
+    pozdrav = "Dobrý večer!"
+else: # Hodiny 22, 23, 0, 1, 2, 3, 4
+    pozdrav = "Dobrou noc!"
+
+# Výpis pozdravu a aktuálního data a času
+print(pozdrav)
+print(f"Dnes je {den_v_tydnu} {den}. {mesic} {rok}, {cas}")
+</code></pre>

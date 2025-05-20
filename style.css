@@ -104,8 +104,8 @@ body {
 
 /* Style for exercise headers */
 .content-pane h2 {
-    margin-top: 40px; /* Increased top margin for h2 within content */
-    background-color: #fffacd; /* Light yellowish background */
+    margin-top: 60px; /* Increased top margin for h2 within content */
+    background-color: #e2e7ff; /* Light yellowish background */
     padding: 10px 15px; /* Add padding around the header text */
     border-left: 5px solid #ffcc00; /* Optional: Add a left border for emphasis */
     border-bottom: 1px solid #eee; /* Keep the bottom border */
