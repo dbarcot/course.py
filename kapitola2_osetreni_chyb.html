@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Ošetření chyb</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Ošetření chyb (<code>try</code>, <code>except</code>)</h1>
+            <p>Při psaní programů se mohou vyskytnout chyby (v Pythonu nazývané výjimky - exceptions), které by normálně způsobily pád programu a zobrazení chybové hlášky. Konstrukce <code>try</code> a <code>except</code> umožňuje tyto chyby "zachytit" a elegantně na ně zareagovat, aniž by program spadl.</p>
+
+            <h3>Základní struktura <code>try-except</code></h3>
+            <ul>
+                <li>Do bloku <code>try</code> umístíme kód, u kterého očekáváme, že by mohl vyvolat chybu (výjimku).</li>
+                <li>Pokud v bloku <code>try</code> dojde k chybě, provádění kódu v <code>try</code> se okamžitě přeruší a Python se pokusí najít odpovídající blok <code>except</code>.</li>
+                <li>Pokud je nalezen blok <code>except</code>, který odpovídá typu vyvolané výjimky, provede se kód v tomto bloku.</li>
+                <li>Pokud chyba nenastane, blok <code>except</code> se přeskočí.</li>
+            </ul>
+            <pre><code class="language-python">
+# Příklad: Dělení nulou
+try:
+    cislo_str = input("Zadej číslo, kterým budeme dělit 10: ")
+    cislo = int(cislo_str) # Může vyvolat ValueError, pokud vstup není číslo
+    vysledek = 10 / cislo  # Může vyvolat ZeroDivisionError, pokud je cislo 0
+    print(f"Výsledek 10 / {cislo} je {vysledek}")
+except ValueError:
+    print("Chyba: Nezadal jsi platné celé číslo.")
+except ZeroDivisionError:
+    print("Chyba: Nelze dělit nulou!")
+except Exception as e: # Zachytí jakoukoliv jinou chybu, která nebyla specifikována výše
+    print(f"Nastala neočekávaná chyba: {e}")
+
+print("Program pokračuje dál...")
+            </code></pre>
+            <p>V příkladu výše:
+                - Pokud uživatel zadá text (např. "abc"), <code>int("abc")</code> vyvolá <code>ValueError</code>.
+                - Pokud uživatel zadá <code>0</code>, <code>10 / 0</code> vyvolá <code>ZeroDivisionError</code>.
+                - <code>except Exception as e:</code> je obecný handler, který zachytí jakoukoli jinou výjimku. Proměnná <code>e</code> bude obsahovat instanci výjimky, kterou můžeme např. vypsat.
+            </p>
+
+            <h3>Zachytávání specifických výjimek</h3>
+            <p>Je dobrým zvykem zachytávat co nejspecifičtější typy výjimek, o kterých víte, že mohou nastat. To umožňuje lépe reagovat na různé chybové stavy.</p>
+            <pre><code class="language-python">
+# Příklad z examples/CV9_hledani_nejdelsich_slov_Barcot_1-33.py (zjednodušeno)
+# def najdi_nejdelsi_slova(soubor):
+#     try:
+#         # 'with open(...)' se postará o správné uzavření souboru
+#         with open(soubor, 'r', encoding='utf-8') as f: # Zkusí otevřít soubor
+#             slova = []
+#             for radek in f:
+#                 # ... kód pro zpracování souboru ...
+#                 pass # Nahrazeno pro jednoduchost
+#             print(f"Soubor '{soubor}' úspěšně zpracován.")
+#             # return max_delka, nejdelsi # Původní návratové hodnoty
+#             return 10, ["nejdelsi_slovo"]
+#     except FileNotFoundError: # Pokud soubor neexistuje
+#         print(f"Chyba: Soubor '{soubor}' nebyl nalezen!")
+#         return None, []
+#     except Exception as e: # Pro jiné chyby při práci se souborem
+#         print(f"Nastala chyba při čtení souboru '{soubor}': {e}")
+#         return None, []
+#
+# delka, slova_vysledek = najdi_nejdelsi_slova('neexistujici_soubor.txt')
+# if slova_vysledek:
+#    print(f"Nalezena slova: {slova_vysledek} s délkou {delka}")
+# else:
+#    print("Nenalezena žádná slova nebo nastala chyba.")
+            </code></pre>
+
+            <h3>Blok <code>else</code> v <code>try-except</code></h3>
+            <p>Blok <code>else</code> lze přidat za všechny bloky <code>except</code>. Kód v bloku <code>else</code> se provede pouze tehdy, pokud v bloku <code>try</code> nedošlo k žádné výjimce.</p>
+            <pre><code class="language-python">
+try:
+    cislo = int(input("Zadej kladné číslo: "))
+    if cislo <= 0:
+        raise ValueError("Číslo musí být kladné!") # Vyvolání vlastní výjimky
+except ValueError as ve:
+    print(f"Chyba vstupu: {ve}")
+else:
+    print(f"Zadal jsi správně číslo: {cislo}. Pokračujeme ve zpracování...")
+    # Zde by byl kód, který se má provést jen při úspěšném try bloku
+            </code></pre>
+
+            <h3>Blok <code>finally</code></h3>
+            <p>Blok <code>finally</code> se provede vždy, bez ohledu na to, zda v bloku <code>try</code> došlo k výjimce, zda byla zachycena, nebo ne. Typicky se používá pro "úklidové" operace, jako je zavírání souborů nebo uvolňování zdrojů.</p>
+            <pre><code class="language-python">
+soubor = None # Inicializace proměnné
+try:
+    print("Pokouším se otevřít soubor...")
+    soubor = open("muj_testovaci_soubor.txt", "w", encoding="utf-8")
+    soubor.write("Testovací zápis.\n")
+    # Uměle vyvoláme chybu pro demonstraci finally
+    # vysledek = 10 / 0
+    print("Zápis do souboru proběhl úspěšně.")
+except FileNotFoundError:
+    print("Soubor nelze vytvořit nebo otevřít.")
+except Exception as e:
+    print(f"Nastala chyba: {e}")
+finally:
+    print("Blok finally se provádí vždy.")
+    if soubor: # Pokud se soubor podařilo otevřít
+        print("Zavírám soubor.")
+        soubor.close()
+            </code></pre>
+            <p>Ošetřování chyb je klíčovou součástí psaní robustních programů, které dokáží gracefully reagovat na neočekávané situace.</p>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>

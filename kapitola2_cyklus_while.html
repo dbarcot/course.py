@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Cyklus while</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Cyklus <code>while</code></h1>
+            <p>Cyklus <code>while</code> (dokud) opakuje blok kódu, dokud je zadaná podmínka pravdivá (<code>True</code>). Před každým provedením těla cyklu se podmínka znovu vyhodnotí.</p>
+
+            <h3>Základní struktura</h3>
+            <pre><code class="language-python">
+# Jednoduchý příklad while cyklu
+pocitadlo = 0
+while pocitadlo < 5:  # Podmínka: dokud je pocitadlo menší než 5
+    print(f"Pocitadlo je: {pocitadlo}")
+    pocitadlo = pocitadlo + 1 # Důležité: měníme hodnotu proměnné v podmínce!
+                            # Bez toho by cyklus běžel donekonečna.
+print("Konec while cyklu.")
+# Výstup:
+# Pocitadlo je: 0
+# Pocitadlo je: 1
+# Pocitadlo je: 2
+# Pocitadlo je: 3
+# Pocitadlo je: 4
+# Konec while cyklu.
+            </code></pre>
+            <p><strong>Pozor na nekonečné cykly!</strong> Pokud se podmínka cyklu <code>while</code> nikdy nestane nepravdivou (<code>False</code>), cyklus poběží donekonečna a program se "zasekne". Vždy se ujistěte, že se v těle cyklu děje něco, co může podmínku ovlivnit.</p>
+
+            <h3>Použití s příkazem <code>break</code></h3>
+            <p>Někdy chceme vytvořit cyklus, který běží "donekonečna", dokud nenastane určitá událost. V takovém případě můžeme použít <code>while True:</code> a uvnitř cyklu testovat podmínku pro ukončení pomocí příkazu <code>break</code>.</p>
+            <pre><code class="language-python">
+# Příklad z examples/CV2_ovoce_a_zelenina_Barcot_1-33.py (mírně upraveno pro srozumitelnost)
+# Tento cyklus se ptá uživatele, zda chce pokračovat.
+# while True:
+#     pokracovat = input("Chcete zadat nové slovo (a/n)? ")
+#     if pokracovat.lower() == "a": # .lower() převede vstup na malá písmena
+#         x = input("Zadejte ovoce či zeleninu: ")
+#         # Zde by byl kód pro kontrolu, zda je x ovoce nebo zelenina...
+#         print(f"Zadal jste: {x}")
+#     elif pokracovat.lower() == "n":
+#         print("Děkujeme za použití programu.")
+#         break # Ukončí cyklus while
+#     else:
+#         print("Neplatná volba, zadejte 'a' nebo 'n'.")
+
+# Jednodušší příklad s break
+cislo = 0
+while True:
+    print(f"Aktuální číslo: {cislo}")
+    if cislo == 3:
+        print("Dosáhli jsme čísla 3, končíme.")
+        break # Ukončí cyklus
+    cislo += 1 # Zkrácený zápis pro cislo = cislo + 1
+            </code></pre>
+
+            <h3>Použití s příkazem <code>continue</code> (zmíníme stručně)</h3>
+            <p>Příkaz <code>continue</code> přeskočí zbytek aktuální iterace cyklu a pokračuje další iterací (znovu vyhodnotí podmínku).</p>
+            <pre><code class="language-python">
+i = 0
+while i < 5:
+    i += 1
+    if i == 3:
+        print("Přeskakuji číslo 3")
+        continue # Přeskočí print(i) pro i=3
+    print(i)
+# Výstup:
+# 1
+# 2
+# Přeskakuji číslo 3
+# 4
+# 5
+            </code></pre>
+            <p>Cyklus <code>while</code> je vhodný, když nevíme předem, kolikrát se má cyklus opakovat, a opakování závisí na splnění nějaké dynamické podmínky.</p>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>

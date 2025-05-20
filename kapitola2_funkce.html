@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Definování funkcí</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Definování funkcí (<code>def</code>, <code>return</code>)</h1>
+            <p>Funkce jsou pojmenované bloky kódu, které provádějí určitý úkol. Můžete je "zavolat" (spustit) z jiných částí programu, kolikrát potřebujete. Používání funkcí má několik výhod:</p>
+            <ul>
+                <li><strong>Opakované použití kódu:</strong> Nemusíte psát stejný kód vícekrát. Stačí ho napsat jednou do funkce a pak funkci volat.</li>
+                <li><strong>Organizace kódu:</strong> Rozdělují program na menší, logické části, což zlepšuje čitelnost a usnadňuje údržbu.</li>
+                <li><strong>Abstrakce:</strong> Skrývají detaily implementace. Stačí vědět, co funkce dělá, ne nutně jak to dělá.</li>
+            </ul>
+
+            <h3>Definice funkce pomocí <code>def</code></h3>
+            <p>Definice funkce začíná klíčovým slovem <code>def</code>, následovaným názvem funkce, závorkami <code>()</code> (které mohou obsahovat parametry) a dvojtečkou <code>:</code>. Tělo funkce (kód, který funkce provádí) musí být odsazeno.</p>
+            <pre><code class="language-python">
+# Definice jednoduché funkce bez parametrů a bez návratové hodnoty
+def pozdrav():
+    print("Ahoj! Vítej v programu.")
+
+# Volání (spuštění) funkce
+pozdrav()  # Vypíše: Ahoj! Vítej v programu.
+pozdrav()  # Můžeme ji volat opakovaně
+            </code></pre>
+
+            <h3>Parametry funkce</h3>
+            <p>Funkce mohou přijímat vstupní hodnoty, tzv. parametry (nebo argumenty). Ty se definují v závorkách v definici funkce.</p>
+            <pre><code class="language-python">
+def pozdrav_jmenem(jmeno): # 'jmeno' je parametr
+    print(f"Ahoj, {jmeno}!")
+
+pozdrav_jmenem("Petře")  # "Petře" je argument předaný parametru 'jmeno'. Vypíše: Ahoj, Petře!
+pozdrav_jmenem("Lucie")  # Vypíše: Ahoj, Lucie!
+
+def secti_cisla(a, b): # Funkce se dvěma parametry
+    soucet = a + b
+    print(f"Součet {a} + {b} je {soucet}.")
+
+secti_cisla(5, 3)    # Vypíše: Součet 5 + 3 je 8.
+secti_cisla(100, 200) # Vypíše: Součet 100 + 200 je 300.
+            </code></pre>
+
+            <h3>Návratová hodnota pomocí <code>return</code></h3>
+            <p>Funkce mohou nejen provádět akce (jako je tisk), ale také vracet výsledek své činnosti zpět do místa, odkud byly volány. K tomu slouží příkaz <code>return</code>.</p>
+            <pre><code class="language-python">
+def vynasob_dvema(cislo):
+    vysledek = cislo * 2
+    return vysledek # Funkce vrací hodnotu proměnné 'vysledek'
+
+moje_cislo = 7
+vysledek_funkce = vynasob_dvema(moje_cislo) # Výsledek volání funkce se uloží do proměnné
+print(f"Dvojnásobek čísla {moje_cislo} je {vysledek_funkce}.") # Vypíše: Dvojnásobek čísla 7 je 14.
+
+print(f"Trojnásobek je {vynasob_dvema(3) * 1.5}") # Můžeme použít výsledek přímo
+
+# Příklad z examples/CV8_prevod_stupnu_na_radiany_a_radianu_na_stupne_Barcot_1-33.py
+import math # Potřebujeme pro math.pi
+
+def stupne_na_radiany(stupne):
+    # Tato funkce převede stupně na radiány a vrátí výsledek
+    return stupne * math.pi / 180
+
+def radiany_na_stupne(radiany):
+    # Tato funkce převede radiány na stupně a vrátí výsledek
+    return radiany * 180 / math.pi
+
+rad = stupne_na_radiany(90)
+print(f"90 stupňů je {rad:.4f} radiánů.") # .4f formátuje na 4 desetinná místa
+
+stup = radiany_na_stupne(math.pi / 2)
+print(f"{math.pi / 2:.4f} radiánů je {stup}°.")
+            </code></pre>
+            <p>Pokud funkce neobsahuje příkaz <code>return</code>, nebo obsahuje <code>return</code> bez hodnoty, automaticky vrací speciální hodnotu <code>None</code>.</p>
+
+            <h3>Docstringy (Dokumentační řetězce)</h3>
+            <p>Je dobrým zvykem přidávat na začátek těla funkce víceřádkový řetězec (uzavřený v <code>"""..."""</code>), který popisuje, co funkce dělá, jaké má parametry a co vrací. Tomuto se říká docstring.</p>
+            <pre><code class="language-python">
+def vypocitej_obsah_obdelnika(delka, sirka):
+    """Vypočítá obsah obdélníka.
+
+    Args:
+        delka (float): Délka obdélníka.
+        sirka (float): Šířka obdélníka.
+
+    Returns:
+        float: Obsah obdélníka.
+    """
+    return delka * sirka
+
+obsah = vypocitej_obsah_obdelnika(10, 5)
+print(f"Obsah obdélníka je: {obsah}")
+# Nástroje a některá IDE mohou tento docstring zobrazit jako nápovědu k funkci.
+# help(vypocitej_obsah_obdelnika) by také zobrazilo tento docstring.
+            </code></pre>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>

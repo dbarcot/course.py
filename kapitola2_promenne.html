@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Proměnné a přiřazení</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Proměnné a přiřazení</h1>
+            <p>Proměnné si můžeme představit jako pojmenované "krabičky" v paměti počítače, do kterých ukládáme data (například čísla, text, seznamy). Hodnotu proměnné přiřadíme pomocí operátoru rovná se (<code>=</code>).</p>
+            <pre><code class="language-python">
+# Vytvoření proměnné 'pozdrav' a uložení textu (řetězce)
+pozdrav = "Ahoj světe!"
+print(pozdrav)  # Vypíše: Ahoj světe!
+
+# Vytvoření proměnné 'cislo' a uložení celého čísla
+cislo = 123
+print(cislo)  # Vypíše: 123
+
+# Vytvoření proměnné 'desetinne_cislo' a uložení desetinného čísla
+desetinne_cislo = 3.14
+print(desetinne_cislo)  # Vypíše: 3.14
+
+# Proměnná může změnit svou hodnotu
+vek = 18
+print("Původní věk:", vek)  # Vypíše: Původní věk: 18
+vek = 19  # Nová hodnota pro proměnnou 'vek'
+print("Nový věk:", vek)  # Vypíše: Nový věk: 19
+
+# Můžeme také provádět operace s proměnnými
+a = 10
+b = 5
+soucet = a + b
+print("Součet a + b je:", soucet)  # Vypíše: Součet a + b je: 15
+            </code></pre>
+            <h3>Pravidla pro názvy proměnných:</h3>
+            <ul>
+                <li>Název proměnné může obsahovat písmena (malá i velká), číslice a podtržítko (<code>_</code>).</li>
+                <li>Název proměnné nesmí začínat číslicí.</li>
+                <li>Názvy proměnných jsou citlivé na velikost písmen (<code>vek</code> a <code>Vek</code> jsou dvě různé proměnné).</li>
+                <li>Název proměnné by neměl být stejný jako klíčová slova Pythonu (např. <code>if</code>, <code>for</code>, <code>def</code>, <code>class</code> atd.).</li>
+                <li>Je dobrým zvykem používat výstižné názvy, které popisují, co proměnná uchovává (např. <code>jmeno_uzivatele</code>, <code>pocet_pokusu</code>). Pro víceslovné názvy se často používá podtržítková notace (snake_case).</li>
+            </ul>
+            <pre><code class="language-python">
+# Správné názvy proměnných
+moje_promenna = "hodnota"
+cislo1 = 1
+uzivatelsky_vstup = "text"
+_pomocna_promenna = True # Začínající podtržítkem je konvence pro interní proměnné
+
+# Nesprávné názvy proměnných (vedly by k chybě)
+# 1cislo = 1  # Začíná číslicí
+# moje-promenna = "chyba" # Obsahuje pomlčku (mínus)
+# for = "klicove slovo" # Používá klíčové slovo
+            </code></pre>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>

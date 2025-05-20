@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Příkaz break</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Příkaz <code>break</code></h1>
+            <p>Příkaz <code>break</code> se používá k okamžitému ukončení nejbližšího vnitřního cyklu (<code>for</code> nebo <code>while</code>), ve kterém se nachází. Jakmile Python narazí na <code>break</code>, provádění cyklu se zastaví a program pokračuje prvním příkazem za cyklem.</p>
+
+            <h3>Použití <code>break</code> v cyklu <code>for</code></h3>
+            <pre><code class="language-python">
+# Hledání prvního čísla dělitelného 7 v seznamu
+cisla = [1, 5, 12, 21, 8, 14, 30]
+hledane_cislo = None # Proměnná pro uložení nalezeného čísla
+
+for cislo in cisla:
+    print(f"Kontroluji číslo: {cislo}")
+    if cislo % 7 == 0: # Zbytek po dělení 7 je 0?
+        hledane_cislo = cislo
+        print(f"Nalezeno první číslo dělitelné 7: {hledane_cislo}")
+        break # Našli jsme, co jsme hledali, cyklus může skončit
+    # Pokud bychom zde neměli break, cyklus by pokračoval a našel by i 14.
+
+if hledane_cislo is not None:
+    print(f"První nalezené číslo dělitelné 7 je {hledane_cislo}.")
+else:
+    print("V seznamu nebylo žádné číslo dělitelné 7.")
+
+# Výstup:
+# Kontroluji číslo: 1
+# Kontroluji číslo: 5
+# Kontroluji číslo: 12
+# Kontroluji číslo: 21
+# Nalezeno první číslo dělitelné 7: 21
+# První nalezené číslo dělitelné 7 je 21.
+            </code></pre>
+
+            <h3>Použití <code>break</code> v cyklu <code>while</code></h3>
+            <p>Příkaz <code>break</code> je velmi častý v cyklech <code>while True:</code>, kde slouží jako hlavní mechanismus pro ukončení cyklu na základě nějaké podmínky testované uvnitř těla cyklu.</p>
+            <pre><code class="language-python">
+# Příklad z examples/CV2_ovoce_a_zelenina_Barcot_1-33.py
+# while True:
+#     pokracovat = input ("Chcete zadat nové slovo (a/n)? ")
+#     if pokracovat == "a":
+#         # ... (kód pro zpracování vstupu) ...
+#         pass # pass je zástupný symbol, nedělá nic
+#     else: # Předpokládáme, že pokud to není "a", chceme skončit
+#         print("Děkujeme za použití programu")
+#         break # Ukončí while True cyklus
+
+# Jiný příklad: Hádání čísla
+tajne_cislo = 7
+pokus = 0
+while True:
+    pokus += 1
+    zadane_cislo_text = input(f"Pokus č. {pokus}: Hádej tajné číslo (1-10): ")
+    zadane_cislo = int(zadane_cislo_text)
+
+    if zadane_cislo == tajne_cislo:
+        print(f"Gratuluji! Uhodl jsi číslo {tajne_cislo} na {pokus}. pokus.")
+        break # Správný tip, konec cyklu
+    elif zadane_cislo < tajne_cislo:
+        print("Tajné číslo je větší.")
+    else:
+        print("Tajné číslo je menší.")
+
+    if pokus >= 3: # Omezení počtu pokusů
+        print(f"Bohužel, neuhodl jsi. Tajné číslo bylo {tajne_cislo}.")
+        break # Konec cyklu po 3 neúspěšných pokusech
+            </code></pre>
+            <p>Příkaz <code>break</code> je užitečný nástroj pro řízení toku cyklů, když potřebujeme cyklus opustit dříve, než by normálně skončil (tj. než by jeho podmínka byla nepravdivá nebo než by došly prvky v sekvenci).</p>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>

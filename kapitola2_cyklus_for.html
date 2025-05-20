@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutoriál - Cyklus for</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+</head>
+<body>
+    <div class="tutorial-container">
+        <aside class="navigation-pane">
+            <h2>Kapitoly</h2>
+            <nav>
+                <ul>
+                    <li><a href="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
+                    <li>
+                        Kapitola 2: Základní konstrukce
+                        <ul>
+                            <li><a href="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
+                            <li><a href="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
+                            <li><a href="kapitola2_komentare.html">Komentáře</a></li>
+                            <li><a href="kapitola2_odsazeni.html">Odsazení</a></li>
+                            <li><a href="kapitola2_podminky.html">Podmíněné příkazy</a></li>
+                            <li><a href="kapitola2_cyklus_for.html">Cyklus for</a></li>
+                            <li><a href="kapitola2_cyklus_while.html">Cyklus while</a></li>
+                            <li><a href="kapitola2_prikaz_break.html">Příkaz break</a></li>
+                            <li><a href="kapitola2_funkce.html">Definování funkcí</a></li>
+                            <li><a href="kapitola2_osetreni_chyb.html">Ošetření chyb</a></li>
+                            <li><a href="kapitola2_import.html">Importování modulů</a></li>
+                        </ul>
+                    </li>
+                    <!-- Další kapitoly budou přidány zde -->
+                </ul>
+            </nav>
+        </aside>
+        <main class="content-pane">
+            <h1>Cyklus <code>for</code></h1>
+            <p>Cyklus <code>for</code> v Pythonu se používá k iteraci (procházení) přes sekvenci (jako je seznam, n-tice, slovník, množina nebo řetězec) nebo jiné iterovatelné objekty. S každou iterací cyklus přiřadí aktuální prvek sekvence do proměnné a provede blok kódu.</p>
+
+            <h3>Procházení seznamu</h3>
+            <pre><code class="language-python">
+ovoce_seznam = ["jablko", "banán", "třešeň"]
+for o in ovoce_seznam:  # Proměnná 'o' postupně nabývá hodnot "jablko", "banán", "třešeň"
+    print(f"Mám rád/a {o}.")
+# Výstup:
+# Mám rád/a jablko.
+# Mám rád/a banán.
+# Mám rád/a třešeň.
+            </code></pre>
+
+            <h3>Procházení řetězce</h3>
+            <p>Řetězec je sekvence znaků, takže přes něj můžeme také iterovat.</p>
+            <pre><code class="language-python">
+slovo = "Python"
+for pismeno in slovo:
+    print(pismeno)
+# Výstup:
+# P
+# y
+# t
+# h
+# o
+# n
+            </code></pre>
+
+            <h3>Funkce <code>range()</code></h3>
+            <p>Velmi často chceme provést blok kódu určitý početkrát. K tomu slouží funkce <code>range()</code>, která generuje sekvenci čísel.</p>
+            <ul>
+                <li><code>range(stop)</code>: Generuje čísla od 0 do <code>stop-1</code>.</li>
+                <li><code>range(start, stop)</code>: Generuje čísla od <code>start</code> do <code>stop-1</code>.</li>
+                <li><code>range(start, stop, step)</code>: Generuje čísla od <code>start</code> do <code>stop-1</code> s krokem <code>step</code>.</li>
+            </ul>
+            <pre><code class="language-python">
+# range(stop)
+for i in range(5):  # i bude 0, 1, 2, 3, 4
+    print(f"Iterace číslo: {i}")
+
+# range(start, stop)
+for i in range(2, 6): # i bude 2, 3, 4, 5
+    print(f"Číslo: {i}")
+
+# range(start, stop, step)
+for i in range(1, 10, 2): # i bude 1, 3, 5, 7, 9
+    print(f"Liché číslo: {i}")
+
+# Příklad z examples/CV1_pejsci_Barcot_1-33.py
+# n = int(input("Zadejte počet pejsků: " )) # Např. n = 3
+# for i in range(n, 0, -1): # i bude postupně 3, 2, 1 (0 se již neprovede)
+#     if i == 1:
+#         print(f"{i} pejsek jde na výlet sám.")
+#     elif i in [2, 3, 4]:
+#         print(f"{i} pejsci jdou na výlet, jeden se zaběhl.")
+#     else:
+#         print(f"{i} pejsků jde na výlet a jeden se zaběhl.")
+            </code></pre>
+
+            <h3>Vnořené cykly</h3>
+            <p>Můžeme mít cyklus uvnitř jiného cyklu. To se hodí například pro práci s dvourozměrnými strukturami (jako jsou tabulky nebo matice).</p>
+            <pre><code class="language-python">
+for i in range(1, 4): # Vnější cyklus (1, 2, 3)
+    for j in ["a", "b"]: # Vnitřní cyklus ("a", "b")
+        print(f"i={i}, j={j}")
+# Výstup:
+# i=1, j=a
+# i=1, j=b
+# i=2, j=a
+# i=2, j=b
+# i=3, j=a
+# i=3, j=b
+            </code></pre>
+            <p>Cyklus <code>for</code> je velmi mocný nástroj pro opakování operací nad kolekcemi dat nebo pro provádění kódu daný početkrát.</p>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="script.js"></script>
+</body>
+</html>
