@@ -1,0 +1,356 @@
+<h1 id="kapitola4-4">Kapitola 4.4: Projektová cvičení - Cvičení</h1>
+<p>V této části si vyzkoušíte napsat komplexnější programy, které kombinují více konceptů z předchozích kapitol. Tato cvičení jsou inspirována původními ukázkovými skripty.</p>
+
+<h2 id="cviceni-31">Cvičení 31: Jednoduchý převodník jednotek (Stupně/Radiány)</h2>
+<p><strong>Procvičujeme:</strong> Funkce, vstup/výstup, podmínky, moduly (<code>math</code>).</p>
+<p><strong>Zadání:</strong> Napište program, který funguje jako jednoduchý převodník mezi stupni a radiány. Program by měl:</p>
+<ol>
+    <li>Zobrazit uživateli menu s možnostmi: "1 - Stupně na radiány", "2 - Radiány na stupně", "3 - Konec".</li>
+    <li>Načíst volbu uživatele.</li>
+    <li>Pokud uživatel zvolí 1, zeptat se na hodnotu ve stupních, provést převod na radiány a výsledek vypsat.</li>
+    <li>Pokud uživatel zvolí 2, zeptat se na hodnotu v radiánech, provést převod na stupně a výsledek vypsat.</li>
+    <li>Pokud uživatel zvolí 3, program ukončit.</li>
+    <li>Pokud uživatel zadá neplatnou volbu, vypište chybovou zprávu a znovu zobrazte menu.</li>
+    <li>Použijte funkce pro převody a pro zobrazení menu/načtení volby.</li>
+</ol>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte funkce, input(), if/elif/else, while True, break, modul math
+</code></pre>
+<p><strong>Očekávaný výstup (příklad interakce):</strong></p>
+<pre>
+Vyberte možnost:
+1 - Stupně na radiány
+2 - Radiány na stupně
+3 - Konec
+Zadejte volbu: 1
+Zadejte hodnotu ve stupních: 90
+90.0 stupňů je přibližně 1.5708 radiánů.
+
+Vyberte možnost:
+1 - Stupně na radiány
+2 - Radiány na stupně
+3 - Konec
+Zadejte volbu: 2
+Zadejte hodnotu v radiánech: 3.14159
+3.14159 radiánů je přibližně 179.9996 stupňů.
+
+Vyberte možnost:
+1 - Stupně na radiány
+2 - Radiány na stupně
+3 - Konec
+Zadejte volbu: 4
+Neplatná volba.
+
+Vyberte možnost:
+1 - Stupně na radiány
+2 - Radiány na stupně
+3 - Konec
+Zadejte volbu: 3
+Konec programu.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import math
+
+def stupne_na_radiany(stupne):
+    """Převádí stupně na radiány."""
+    return stupne * (math.pi / 180)
+
+def radiany_na_stupne(radiany):
+    """Převádí radiány na stupně."""
+    return radiány * (180 / math.pi)
+
+def vypis_menu():
+    """Vypíše menu možností."""
+    print("\nVyberte možnost:")
+    print("1 - Stupně na radiány")
+    print("2 - Radiány na stupně")
+    print("3 - Konec")
+
+def nacti_volbu():
+    """Načte a vrátí volbu uživatele."""
+    volba_str = input("Zadejte volbu: ")
+    return volba_str
+
+def proved_prevod(volba):
+    """Provede převod na základě volby."""
+    try:
+        if volba == '1':
+            hodnota_str = input("Zadejte hodnotu ve stupních: ")
+            stupne = float(hodnota_str)
+            radiany = stupne_na_radiany(stupne)
+            print(f"{stupne} stupňů je přibližně {radiany:.4f} radiánů.")
+        elif volba == '2':
+            hodnota_str = input("Zadejte hodnotu v radiánech: ")
+            radiany = float(hodnota_str)
+            stupne = radiany_na_stupne(radiany)
+            print(f"{radiany} radiánů je přibližně {stupne:.4f} stupňů.")
+        else:
+            print("Neplatná volba.")
+    except ValueError:
+        print("Chyba: Zadal jsi neplatné číslo.")
+    except Exception as e:
+        print(f"Nastala neočekávaná chyba: {e}")
+
+
+# Hlavní část programu
+while True:
+    vypis_menu()
+    volba = nacti_volbu()
+
+    if volba == '3':
+        print("Konec programu.")
+        break # Ukončí hlavní cyklus
+    else:
+        proved_prevod(volba)
+
+</code></pre>
+</details>
+
+<h2 id="cviceni-32">Cvičení 32: Program pro pozdrav podle denní doby</h2>
+<p><strong>Procvičujeme:</strong> Moduly (<code>time</code>), získání aktuálního času, podmínky (<code>if</code>, <code>elif</code>, <code>else</code>).</p>
+<p><strong>Zadání:</strong> Napište program, který získá aktuální hodinu a na základě ní vypíše vhodný pozdrav:</p>
+<ul>
+    <li>5:00 - 11:59: "Dobré ráno!"</li>
+    <li>12:00 - 17:59: "Dobré odpoledne!"</li>
+    <li>18:00 - 21:59: "Dobrý večer!"</li>
+    <li>22:00 - 4:59: "Dobrou noc!"</li>
+</ul>
+<pre><code class="language-python">
+import time
+# Váš kód zde
+# Získejte aktuální hodinu a použijte podmínky
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro aktuální čas 9:30):</strong></p>
+<pre>
+Dobré ráno!
+</pre>
+<p><strong>Očekávaný výstup (příklad pro aktuální čas 20:15):</strong></p>
+<pre>
+Dobrý večer!
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import time
+
+t = time.localtime()
+aktualni_hodina = t.tm_hour
+
+if 5 <= aktualni_hodina < 12:
+    print("Dobré ráno!")
+elif 12 <= aktualni_hodina < 18:
+    print("Dobré odpoledne!")
+elif 18 <= aktualni_hodina < 22:
+    print("Dobrý večer!")
+else: # 22:00 - 4:59
+    print("Dobrou noc!")
+</code></pre>
+</details>
+
+<h2 id="cviceni-33">Cvičení 33: Jednoduchý program pro práci se seznamem (Ovoce/Zelenina)</h2>
+<p><strong>Procvičujeme:</strong> Seznamy, vstup/výstup, podmínky (<code>if</code>, <code>elif</code>, <code>else</code>), operátor <code>in</code>.</p>
+<p><strong>Zadání:</strong> Máte dva seznamy: jeden s názvy ovoce a druhý s názvy zeleniny. Napište program, který se zeptá uživatele na název plodiny. Program by měl zkontrolovat, zda se zadaný název nachází v seznamu ovoce nebo v seznamu zeleniny, a vypsat příslušnou zprávu ("Je to ovoce.", "Je to zelenina."). Pokud název není ani v jednom seznamu, vypište "Toto neznám.".</p>
+<pre><code class="language-python">
+ovoce = ["jablko", "hruska", "merunka", "tresen", "svestka"]
+zelenina = ["mrkev", "celer", "cibule", "rajce", "okurka"]
+# Váš kód zde
+# Získejte vstup, použijte if/elif/else a operátor in
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "rajce"):</strong></p>
+<pre>
+Je to zelenina.
+</pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "banan"):</strong></p>
+<pre>
+Toto neznám.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+ovoce = ["jablko", "hruska", "merunka", "tresen", "svestka"]
+zelenina = ["mrkev", "celer", "cibule", "rajce", "okurka"]
+
+vstup_uzivatele = input("Zadejte název plodiny: ").lower() # Převedeme na malá písmena pro snazší porovnání
+
+if vstup_uzivatele in ovoce:
+    print("Je to ovoce.")
+elif vstup_uzivatele in zelenina:
+    print("Je to zelenina.")
+else:
+    print("Toto neznám.")
+</code></pre>
+</details>
+
+<h2 id="cviceni-34">Cvičení 34: Implementace jednoduchého textového analyzátoru (Hledání nejdelších slov)</h2>
+<p><strong>Procvičujeme:</strong> Práce se soubory (čtení), řetězce (split), seznamy, cykly (for), podmínky, hledání maxima.</p>
+<p><strong>Zadání:</strong> Napište program, který načte text ze souboru (např. <code>text_analyza.txt</code>), najde v něm nejdelší slovo (nebo slova, pokud jich je více se stejnou maximální délkou) a vypíše je spolu s jejich délkou. Program by měl ošetřit případ, kdy soubor neexistuje.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Vytvořte soubor text_analyza.txt ručně s nějakým textem
+# Použijte try/except, with open(), read(), split(), for, if, len(), seznamy
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro soubor s textem "Toto je krátký text pro testování nejdelšího slova."):</strong></p>
+<pre>
+Nejdelší slovo/slova (délka 11): ['testování']
+</pre>
+<p><strong>Očekávaný výstup (příklad pro soubor s textem "Ahoj světe, programování je zábava."):</strong></p>
+<pre>
+Nejdelší slovo/slova (délka 13): ['programování']
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+# Před spuštěním si vytvořte soubor 'text_analyza.txt' s textem.
+
+def najdi_nejdelsi_slova(soubor_cesta):
+    """Najde nejdelší slovo/slova v textovém souboru."""
+    nejdelsi_slova = []
+    max_delka = 0
+
+    try:
+        with open(soubor_cesta, 'r', encoding='utf-8') as f:
+            text = f.read()
+            # Rozdělíme text na slova (jednoduché dělení podle mezer a interpunkce)
+            # Pro robustnější řešení by bylo potřeba složitější zpracování textu
+            slova = text.replace('.', '').replace(',', '').replace('!', '').replace('?', '').split()
+
+            if not slova: # Pokud je soubor prázdný nebo obsahuje jen prázdné znaky
+                return 0, []
+
+            # Najdeme maximální délku slova
+            for slovo in slova:
+                if len(slovo) > max_delka:
+                    max_delka = len(slovo)
+
+            # Najdeme všechna slova s maximální délkou
+            for slovo in slova:
+                if len(slovo) == max_delka:
+                    nejdelsi_slova.append(slovo)
+
+            # Odstraníme duplicity a vrátíme seznam
+            return max_delka, list(set(nejdelsi_slova))
+
+    except FileNotFoundError:
+        print(f"Chyba: Soubor '{soubor_cesta}' nebyl nalezen.")
+        return 0, []
+    except Exception as e:
+        print(f"Nastala chyba při čtení souboru: {e}")
+        return 0, []
+
+# Hlavní část programu
+soubor_s_textem = "text_analyza.txt"
+delka, slova_vysledek = najdi_nejdelsi_slova(soubor_s_textem)
+
+if slova_vysledek:
+    print(f"Nejdelší slovo/slova (délka {delka}): {slova_vysledek}")
+else:
+    print("V souboru nebyla nalezena žádná slova nebo nastala chyba.")
+</code></pre>
+</details>
+
+<h2 id="cviceni-35">Cvičení 35: Generátor náhodných dat a ukládání do JSON</h2>
+<p><strong>Procvičujeme:</strong> Moduly (<code>random</code>, <code>json</code>), slovníky, seznamy, cykly (for), práce se soubory (zápis).</p>
+<p><strong>Zadání:</strong> Napište program, který vygeneruje seznam náhodných dat o fiktivních uživatelích a uloží je do souboru ve formátu JSON. Program by měl:</p>
+<ul>
+    <li>Vygenerovat seznam 5 uživatelů.</li>
+    <li>Každý uživatel by měl být slovník s klíči "id" (náhodné číslo 1000-9999), "jmeno" (náhodně vybrané ze seznamu jmen), "vek" (náhodné číslo 18-60).</li>
+    <li>Použijte moduly <code>random</code> a <code>json</code>.</li>
+    <li>Uložte seznam uživatelů do souboru <code>uzivatele.json</code> ve formátovaném JSON tvaru.</li>
+</ul>
+<pre><code class="language-python">
+import random
+import json
+
+jmena = ["Alice", "Bob", "Charlie", "David", "Eva", "Filip", "Gabriela"]
+# Váš kód zde
+# Vygenerujte data a uložte do JSON souboru
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+(Program nevypíše nic na obrazovku, ale vytvoří soubor 'uzivatele.json' s obsahem podobným tomuto - hodnoty se budou lišit)
+[
+    {
+        "id": 5678,
+        "jmeno": "Alice",
+        "vek": 35
+    },
+    {
+        "id": 1234,
+        "jmeno": "David",
+        "vek": 28
+    },
+    ... (další 3 uživatelé)
+]
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import random
+import json
+
+jmena = ["Alice", "Bob", "Charlie", "David", "Eva", "Filip", "Gabriela"]
+uzivatele = []
+
+for i in range(5): # Vygenerujeme 5 uživatelů
+    uzivatel = {
+        "id": random.randint(1000, 9999),
+        "jmeno": random.choice(jmena),
+        "vek": random.randint(18, 60)
+    }
+    uzivatele.append(uzivatel)
+
+# Převod seznamu slovníků na JSON řetězec s odsazením
+json_string_uzivatele = json.dumps(uzivatele, indent=4, ensure_ascii=False)
+
+# Zápis JSON řetězce do souboru
+try:
+    with open("uzivatele.json", "w", encoding="utf-8") as soubor:
+        soubor.write(json_string_uzivatele)
+    print("Soubor 'uzivatele.json' byl úspěšně vytvořen s daty uživatelů.")
+except Exception as e:
+    print(f"Nastala chyba při zápisu JSON do souboru: {e}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-36">Cvičení 36: Jednoduché odpočítávání</h2>
+<p><strong>Procvičujeme:</strong> Vstup od uživatele, cyklus (<code>while</code> nebo <code>for</code>), modul (<code>time</code> - volitelně pro pauzu), výstup.</p>
+<p><strong>Zadání:</strong> Napište program, který se zeptá uživatele na počet sekund pro odpočítávání. Program by měl poté odpočítávat od zadaného čísla dolů k nule, vypisovat každé číslo na nový řádek. Po dosažení nuly vypište zprávu "Start!". Můžete volitelně použít <code>time.sleep(1)</code> z modulu <code>time</code> pro pauzu jedné sekundy mezi čísly.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Získejte vstup, použijte cyklus, print()
+# Volitelně importujte time a použijte time.sleep(1)
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro vstup "3"):</strong></p>
+<pre>
+3
+2
+1
+Start!
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+import time # Volitelné, pro pauzu
+
+sekundy_str = input("Zadejte počet sekund pro odpočítávání: ")
+try:
+    sekundy = int(sekundy_str)
+
+    if sekundy < 0:
+        print("Počet sekund musí být nezáporný.")
+    else:
+        # Odpočítávání pomocí while cyklu
+        while sekundy > 0:
+            print(sekundy)
+            time.sleep(1) # Pauza 1 sekunda (vyžaduje import time)
+            sekundy -= 1
+
+        print("Start!")
+
+except ValueError:
+    print("Chyba: Nezadal jsi platné celé číslo.")
+</code></pre>
+</details>
