@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif; /* Common sans-serif font */
+    line-height: 1.6;
+    color: #333;
+    background-color: #fdfdfd;
+}
+
+.tutorial-container {
+    display: flex;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.navigation-pane {
+    width: 250px; /* Width of the navigation bar */
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+}
+
+.navigation-pane h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.navigation-pane ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation-pane ul li a {
+    text-decoration: none;
+    color: #007bff; /* A distinct link color */
+    display: block;
+    padding: 8px 0;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.navigation-pane ul li a:hover {
+    background-color: #e0e0e0;
+    color: #0056b3;
+}
+
+.content-pane {
+    flex-grow: 1; /* Takes up the remaining space */
+    padding: 20px 40px; /* More horizontal padding for content */
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows content to scroll if it's too long */
+}
+
+.content-pane h1, .content-pane h2 {
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+.content-pane h1:first-child, .content-pane h2:first-child {
+    margin-top: 0;
+}
+
+
+/* Styling for code blocks (enhanced by Highlight.js) */
+pre {
+    background-color: #f4f4f4; /* Light grey background for code blocks */
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    overflow-x: auto; /* Allow horizontal scrolling for long code lines */
+    /* Highlight.js will apply its own text colors */
+}
+
+pre code {
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+    font-size: 0.95em; /* Slightly smaller font for code */
+    line-height: 1.5;
+}
+
+/* Basic styling for inline code */
+code:not(pre code) {
+  background-color: #eef;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: 'Courier New', Courier, monospace;
+}
