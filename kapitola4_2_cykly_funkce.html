@@ -1,0 +1,287 @@
+<h1 id="kapitola4-2">Kapitola 4.2: Cykly a funkce - Cvičení</h1>
+<p>V této části si procvičíte práci s cykly (<code>for</code> a <code>while</code>), příkazy pro řízení cyklů (<code>break</code> a <code>continue</code>) a definování a používání vlastních funkcí.</p>
+
+<h2 id="cviceni-8">Cvičení 8: Opakování s cyklem for (procházení sekvencí)</h2>
+<p><strong>Procvičujeme:</strong> Cyklus <code>for</code> pro iteraci přes prvky seznamu.</p>
+<p><strong>Zadání:</strong> Máte seznam názvů ovoce. Pomocí cyklu <code>for</code> projděte tento seznam a vypište každý název ovoce na nový řádek.</p>
+<pre><code class="language-python">
+ovoce = ["jablko", "banán", "třešeň", "kiwi"]
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+jablko
+banán
+třešeň
+kiwi
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+ovoce = ["jablko", "banán", "třešeň", "kiwi"]
+for nazev in ovoce:
+    print(nazev)
+</code></pre>
+</details>
+
+<h2 id="cviceni-9">Cvičení 9: Opakování s cyklem for (s range())</h2>
+<p><strong>Procvičujeme:</strong> Cyklus <code>for</code> s funkcí <code>range()</code> pro opakování kódu daný početkrát.</p>
+<p><strong>Zadání:</strong> Pomocí cyklu <code>for</code> a funkce <code>range()</code> vypište čísla od 1 do 5 (včetně).</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte for a range()
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+1
+2
+3
+4
+5
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+for i in range(1, 6):
+    print(i)
+</code></pre>
+</details>
+
+<h2 id="cviceni-10">Cvičení 10: Opakování s cyklem while</h2>
+<p><strong>Procvičujeme:</strong> Cyklus <code>while</code> pro opakování kódu na základě podmínky.</p>
+<p><strong>Zadání:</strong> Pomocí cyklu <code>while</code> vypište čísla od 5 dolů do 1 (včetně). Použijte proměnnou jako počítadlo a nezapomeňte ji v cyklu měnit.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte while
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+5
+4
+3
+2
+1
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+pocitadlo = 5
+while pocitadlo >= 1:
+    print(pocitadlo)
+    pocitadlo -= 1 # Zkrácený zápis pro pocitadlo = pocitadlo - 1
+</code></pre>
+</details>
+
+<h2 id="cviceni-11">Cvičení 11: Ukončení cyklu příkazem break</h2>
+<p><strong>Procvičujeme:</strong> Použití příkazu <code>break</code> pro předčasné ukončení cyklu.</p>
+<p><strong>Zadání:</strong> Projděte seznam čísel pomocí cyklu <code>for</code>. Pokud narazíte na číslo větší než 100, vypište zprávu a cyklus okamžitě ukončete pomocí <code>break</code>.</p>
+<pre><code class="language-python">
+cisla = [10, 50, 120, 30, 150, 80]
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+Nalezeno číslo větší než 100, končím.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+cisla = [10, 50, 120, 30, 150, 80]
+for cislo in cisla:
+    if cislo > 100:
+        print("Nalezeno číslo větší než 100, končím.")
+        break
+    # print(cislo) # Pokud byste chtěli vidět, která čísla se zpracovala před break
+</code></pre>
+</details>
+
+<h2 id="cviceni-12">Cvičení 12: Přeskočení iterace příkazem continue</h2>
+<p><strong>Procvičujeme:</strong> Použití příkazu <code>continue</code> pro přeskočení zbytku aktuální iterace cyklu.</p>
+<p><strong>Zadání:</strong> Projděte čísla od 1 do 10 pomocí cyklu <code>for</code>. Pokud je číslo sudé, přeskočte jeho výpis pomocí <code>continue</code>. Vypište pouze lichá čísla.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte for a continue
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+1
+3
+5
+7
+9
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+for i in range(1, 11):
+    if i % 2 == 0: # Zkontroluje, zda je číslo sudé
+        continue   # Pokud je sudé, přeskočí zbytek iterace
+    print(i)
+</code></pre>
+</details>
+
+<h2 id="cviceni-13">Cvičení 13: Tvorba jednoduchých funkcí (def)</h2>
+<p><strong>Procvičujeme:</strong> Definování funkce bez parametrů a návratové hodnoty pomocí <code>def</code>.</p>
+<p><strong>Zadání:</strong> Vytvořte funkci s názvem <code>vypis_uvod</code>, která po zavolání vypíše krátkou úvodní zprávu (např. "Vítejte v mém programu!"). Poté tuto funkci zavolejte.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Definujte a zavolejte funkci vypis_uvod
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+Vítejte v mém programu!
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+def vypis_uvod():
+    print("Vítejte v mém programu!")
+
+vypis_uvod()
+</code></pre>
+</details>
+
+<h2 id="cviceni-14">Cvičení 14: Funkce s parametry a návratovou hodnotou (return)</h2>
+<p><strong>Procvičujeme:</strong> Definování funkce s parametry a použitím příkazu <code>return</code> pro vrácení hodnoty.</p>
+<p><strong>Zadání:</strong> Vytvořte funkci s názvem <code>spocitej_obvod_ctverce</code>, která přijme jeden parametr (délku strany čtverce). Funkce by měla vypočítat obvod čtverce (4 * strana) a vrátit tuto hodnotu pomocí <code>return</code>. Poté zavolejte funkci s nějakou hodnotou strany a výsledek uložte do proměnné a vypište.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Definujte funkci spocitej_obvod_ctverce a použijte ji
+</code></pre>
+<p><strong>Očekávaný výstup (příklad pro stranu 5):</strong></p>
+<pre>
+Obvod čtverce se stranou 5 je 20.
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+def spocitej_obvod_ctverce(strana):
+    obvod = 4 * strana
+    return obvod
+
+delka_strany = 5
+vysledek_obvod = spocitej_obvod_ctverce(delka_strany)
+print(f"Obvod čtverce se stranou {delka_strany} je {vysledek_obvod}.")
+</code></pre>
+</details>
+
+<h2 id="cviceni-19">Cvičení 19: Práce se seznamy (vytvoření, přístup, přidání)</h2>
+<p><strong>Procvičujeme:</strong> Vytvoření seznamu, přístup k prvkům seznamu pomocí indexu, přidání prvku do seznamu (metoda <code>append()</code>).</p>
+<p><strong>Zadání:</strong> Vytvořte seznam s názvem <code>nakupni_seznam</code>, který bude obsahovat alespoň dva položky (textové řetězce). Vypište první položku seznamu. Poté přidejte na konec seznamu novou položku a vypište celý aktualizovaný seznam.</p>
+<pre><code class="language-python">
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+První položka: Mléko
+Aktualizovaný seznam: ['Mléko', 'Chléb', 'Máslo']
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+nakupni_seznam = ["Mléko", "Chléb"]
+print(f"První položka: {nakupni_seznam[0]}")
+
+nakupni_seznam.append("Máslo")
+print(f"Aktualizovaný seznam: {nakupni_seznam}")
+</code></pre>
+</details>
+
+<h2 id="cviceni-21">Cvičení 21: Základní manipulace s řetězci (metody jako upper, split, replace)</h2>
+<p><strong>Procvičujeme:</strong> Použití základních metod řetězců jako <code>upper()</code>, <code>split()</code>, <code>replace()</code>.</p>
+<p><strong>Zadání:</strong> Máte textový řetězec. Převeďte ho na velká písmena a vypište. Poté ho rozdělte na slova podle mezer a vypište seznam slov. Nakonec v původním řetězci nahraďte jedno slovo jiným a vypište upravený řetězec.</p>
+<pre><code class="language-python">
+text = "Python je zábavný a mocný jazyk"
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+PYTHON JE ZÁBAVNÝ A MOCNÝ JAZYK
+['Python', 'je', 'zábavný', 'a', 'mocný', 'jazyk']
+Python je skvělý a mocný jazyk
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+text = "Python je zábavný a mocný jazyk"
+
+text_velka = text.upper()
+print(text_velka)
+
+slova = text.split()
+print(slova)
+
+text_upraveny = text.replace("zábavný", "skvělý")
+print(text_upraveny)
+</code></pre>
+</details>
+
+<h2 id="cviceni-22">Cvičení 22: Formátování výstupu (f-stringy, zaokrouhlování)</h2>
+<p><strong>Procvičujeme:</strong> Formátování výstupu pomocí f-stringů, zaokrouhlování desetinných čísel.</p>
+<p><strong>Zadání:</strong> Máte proměnnou s desetinným číslem (např. výsledek výpočtu Pí). Vypište toto číslo na dvě desetinná místa pomocí f-stringu. Poté vypište jinou zprávu, která bude obsahovat více proměnných formátovaných pomocí f-stringu.</p>
+<pre><code class="language-python">
+pi_hodnota = 3.1415926535
+produkt = "Notebook"
+cena = 1250.75
+# Váš kód zde
+</code></pre>
+<p><strong>Očekávaný výstup (příklad):</strong></p>
+<pre>
+Hodnota Pí na dvě desetinná místa: 3.14
+Produkt: Notebook, Cena: 1250.75 Kč
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+pi_hodnota = 3.1415926535
+produkt = "Notebook"
+cena = 1250.75
+
+print(f"Hodnota Pí na dvě desetinná místa: {pi_hodnota:.2f}")
+print(f"Produkt: {produkt}, Cena: {cena:.2f} Kč") # Zaokrouhlení ceny na 2 desetinná místa
+</code></pre>
+</details>
+
+<h2 id="cviceni-24">Cvičení 24: Kombinace cyklů a podmínek</h2>
+<p><strong>Procvičujeme:</strong> Použití podmíněných příkazů (<code>if</code>, <code>elif</code>, <code>else</code>) uvnitř cyklů (<code>for</code> nebo <code>while</code>).</p>
+<p><strong>Zadání:</strong> Projděte čísla od 1 do 15 pomocí cyklu <code>for</code>. Pro každé číslo zkontrolujte:
+- Pokud je číslo dělitelné 3 i 5, vypište "FizzBuzz".
+- Jinak, pokud je číslo dělitelné 3, vypište "Fizz".
+- Jinak, pokud je číslo dělitelné 5, vypište "Buzz".
+- Jinak (pokud není dělitelné ani 3 ani 5), vypište samotné číslo.</p>
+<pre><code class="language-python">
+# Váš kód zde
+# Použijte for, if, elif, else
+</code></pre>
+<p><strong>Očekávaný výstup:</strong></p>
+<pre>
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+</pre>
+<details>
+<summary>Ukázka řešení</summary>
+<pre><code class="language-python">
+for cislo in range(1, 16):
+    if cislo % 3 == 0 and cislo % 5 == 0:
+        print("FizzBuzz")
+    elif cislo % 3 == 0:
+        print("Fizz")
+    elif cislo % 5 == 0:
+        print("Buzz")
+    else:
+        print(cislo)
+</code></pre>
+</details>
