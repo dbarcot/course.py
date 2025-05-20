@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="#" data-chapter="kapitola1_uvod.html">Kapitola 1: Úvod</a></li>
-                    <li>
-                        Kapitola 2: Základní konstrukce
+                    <li class="collapsible">
+                        <span class="collapsible-toggle">Kapitola 2: Základní konstrukce</span>
                         <ul>
                             <li><a href="#" data-chapter="kapitola2_promenne.html">Proměnné a přiřazení</a></li>
                             <li><a href="#" data-chapter="kapitola2_vstup_vystup.html">Základní vstup/výstup</a></li>
@@ -86,8 +86,9 @@
             }
         }
 
-        // Add event listeners to navigation links
+        // Add event listeners to navigation links and collapsible toggles
         document.addEventListener('DOMContentLoaded', () => {
+            // Event listeners for navigation links (loading content)
             const navLinks = document.querySelectorAll('.navigation-pane a[data-chapter]');
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
@@ -112,6 +113,15 @@
                     }
                 });
             });
+
+            // Event listeners for collapsible toggles
+            const collapsibleToggles = document.querySelectorAll('.collapsible-toggle');
+            collapsibleToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    toggle.parentElement.classList.toggle('expanded');
+                });
+            });
+
 
             // Initial load of the first chapter content when the page loads
             loadChapterContent('kapitola1_uvod.html');

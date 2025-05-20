@@ -4,19 +4,23 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #fdfdfd;
+    height: 100vh; /* Set body height to full viewport height */
+    overflow: hidden; /* Prevent body scrolling */
 }
 
 .tutorial-container {
     display: flex;
-    min-height: 100vh; /* Full viewport height */
+    height: 100%; /* Full height of the body */
 }
 
 .navigation-pane {
-    width: 250px; /* Width of the navigation bar */
+    width: 250px; /* Fixed width of the navigation bar */
     background-color: #f0f0f0;
     padding: 20px;
     border-right: 1px solid #ccc;
     box-sizing: border-box; /* Ensures padding doesn't add to width */
+    overflow-y: auto; /* Allow navigation to scroll if content is long */
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .navigation-pane h2 {
@@ -29,6 +33,12 @@ body {
     padding: 0;
 }
 
+/* Style for main chapter list items */
+.navigation-pane > nav > ul > li {
+    margin-bottom: 10px; /* Space between main chapters */
+}
+
+/* Style for main chapter links/titles */
 .navigation-pane ul li a {
     text-decoration: none;
     color: #007bff; /* A distinct link color */
@@ -42,8 +52,41 @@ body {
     color: #0056b3;
 }
 
+/* Style for collapsible subsection lists */
+.navigation-pane ul ul {
+    padding-left: 20px; /* Indent subsections */
+    max-height: 0; /* Start collapsed */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Style for expanded subsection lists */
+.navigation-pane ul li.expanded > ul {
+    max-height: 1000px; /* Sufficiently large value to show all content */
+}
+
+/* Style for collapsible toggles (e.g., chapter titles) */
+.collapsible-toggle {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333; /* Darker color for non-link titles */
+    padding: 8px 0;
+}
+
+.collapsible-toggle::before {
+    content: '+ '; /* Plus sign for collapsed state */
+    display: inline-block;
+    width: 1em;
+}
+
+.expanded > .collapsible-toggle::before {
+    content: '- '; /* Minus sign for expanded state */
+}
+
+
 .content-pane {
     flex-grow: 1; /* Takes up the remaining space */
+    width: 80%; /* Content width is 80% of the remaining space */
     padding: 20px 40px; /* More horizontal padding for content */
     box-sizing: border-box;
     overflow-y: auto; /* Allows content to scroll if it's too long */
