@@ -1,23 +1,61 @@
-def najdi_nejdelsi_slova(soubor):
-    try:
-        with open(soubor, 'r', encoding='utf-8') as f:
-            slova = []
-            for radek in f:
-                
-                radek = radek.replace('„', ' ').replace('“', ' ').replace(',', ' ').replace('.', ' ')
-                slova.extend(radek.split())
-            
-            
-            max_delka = max(len(slovo) for slovo in slova)
-            nejdelsi = [slovo for slovo in slova if len(slovo) == max_delka]
-            
-            return max_delka, nejdelsi
-    
-    except FileNotFoundError:
-        print(f"Soubor '{soubor}' nebyl nalezen!")
-        return None, []
+# Tento program najde nejdelší slovo (nebo slova) v textovém souboru.
 
-delka, slova = najdi_nejdelsi_slova('moudra.txt')
-if slova:
-    print(f"Nejdelší slovo má {delka} znaků:")
-    print("Jedná se o následující slova:", slova)
+# Definice funkce, která provede hledání nejdelších slov v daném souboru
+def najdi_nejdelsi_slova(soubor):
+    # Použití try bloku pro ošetření potenciálních chyb (např. soubor nenalezen)
+    try:
+        # Otevření souboru pro čtení ('r') s kódováním UTF-8
+        # Konstrukce 'with' zajistí automatické zavření souboru
+        with open(soubor, 'r', encoding='utf-8') as f:
+            slova = [] # Inicializace prázdného seznamu pro ukládání slov
+            # Iterace přes každý řádek souboru
+            for radek in f:
+                # Nahrazení některých interpunkčních znamének mezerami pro snazší rozdělení na slova
+                # Původní kód: radek = radek.replace('„', ' ').replace('“', ' ').replace(',', ' ').replace('.', ' ')
+                # Rozšířeno o další běžné interpunkční znaménka
+                radek = radek.replace('„', ' ').replace('“', ' ').replace(',', ' ').replace('.', ' ').replace('!', ' ').replace('?', ' ').replace(':', ' ').replace(';', ' ').replace('(', ' ').replace(')', ' ').replace('[', ' ').replace(']', ' ').replace('{', ' ').replace('}', ' ').replace('/', ' ').replace('\\', ' ').replace('\n', ' ')
+                # Rozdělení řádku na slova a přidání do seznamu 'slova'
+                # Použijeme split() bez argumentu, aby se rozdělilo podle libovolného bílého znaku (mezery, tabulátory, nové řádky)
+                slova.extend(radek.split())
+
+            # Odstranění prázdných řetězců, které mohly vzniknout po splitu (např. z více mezer)
+            slova = [slovo for slovo in slova if slovo]
+
+            # Kontrola, zda seznam slov není prázdný po čištění
+            if not slova:
+                 return 0, [] # Pokud je prázdný, vrátíme délku 0 a prázdný seznam
+
+            # Nalezení maximální délky slova v seznamu pomocí funkce max() a generátorového výrazu
+            max_delka = max(len(slovo) for slovo in slova)
+            # Vytvoření seznamu všech slov, která mají maximální délku
+            nejdelsi = [slovo for slovo in slova if len(slovo) == max_delka]
+
+            # Vrácení maximální délky a seznamu nejdelších slov
+            return max_delka, nejdelsi
+
+    # Ošetření chyby FileNotFoundError (soubor nebyl nalezen)
+    except FileNotFoundError:
+        print(f"Chyba: Soubor '{soubor}' nebyl nalezen!")
+        return 0, [] # V případě chyby vrátíme 0 pro délku a prázdný seznam (None by mohlo způsobit chyby jinde)
+    # Ošetření jakékoli jiné výjimky
+    except Exception as e:
+        print(f"Nastala chyba při čtení souboru: {e}")
+        return 0, [] # V případě chyby vrátíme 0 pro délku a prázdný seznam
+
+
+# Hlavní část programu
+# Volání funkce pro nalezení nejdelších slov v souboru 'moudra.txt'
+soubor_s_textem = 'moudra.txt' # Název souboru s textem
+delka, slova_vysledek = najdi_nejdelsi_slova(soubor_s_textem)
+
+# Kontrola, zda funkce vrátila platný výsledek (slova nejsou prázdná)
+if slova_vledek:
+    print(f"Nejdelší slovo/slova (délka {delka}): {slova_vysledek}")
+# Pokud funkce vrátila prázdný seznam (např. kvůli chybě nebo prázdnému souboru)
+else:
+    print("V souboru nebyla nalezena žádná slova nebo nastala chyba.")
+
+# Původní testovací řádky, které nejsou součástí hlavní logiky:
+# print(prevest_na_morseovku("A B")) # Tato funkce není v tomto souboru definována
+# slovo=["A","B"]
+# print(slovo[0])

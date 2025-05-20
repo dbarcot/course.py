@@ -1,77 +1,52 @@
+# Tento program převádí zadaný text na Morseovu abecedu.
+
+# Definice slovníku, kde klíče jsou znaky a hodnoty jsou jejich reprezentace v Morseově abecedě
 MORSEOVA_ABECEDA = {
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G": "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "V": "...-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--..",
-    "1": ".----",
-    "2": "..---",
-    "3": "...--",
-    "4": "....-",
-    "5": ".....",
-    "6": "-....",
-    "7": "--...",
-    "8": "---..",
-    "9": "----.",
-    "0": "-----",
-    ",": "--..--",
-    ".": ".-.-.-",
-    "?": "..--..",
-    "/": "-..-.",
-    "-": "-....-",
-    "(": "-.--.",
-    ")": "-.--.-",
-    "–": "–..–"
+    "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
+    "G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
+    "M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.",
+    "S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-",
+    "Y": "-.--", "Z": "--..",
+    "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....",
+    "6": "-....", "7": "--...", "8": "---..", "9": "----.", "0": "-----",
+    ",": "--..--", ".": ".-.-.-", "?": "..--..", "/": "-..-.", "-": "-....-",
+    "(": "-.--.", ")": "-.--.-", "–": "–..–" # Poznámka: "–" (pomlčka) se může lišit od "-" (spojovník)
 }
 
-
+# Definice funkce pro převod textu na Morseovu abecedu
 def prevest_na_morseovku(text):
-    text = text.upper()  
-    vysledek = ""  
-    slovo_mezera = " || "  
-    znak_mezera = " | "  
+    text = text.upper()  # Převede celý vstupní text na velká písmena pro snazší porovnání se slovníkem
+    vysledek = ""  # Inicializace prázdného řetězce pro ukládání výsledku
+    slovo_mezera = " || "  # Definice mezery mezi slovy v Morseově kódu
+    znak_mezera = " | "  # Definice mezery mezi znaky v rámci slova v Morseově kódu
 
-    prvni_slovo = True
-    for slovo in text.split():  
+    prvni_slovo = True # Příznak pro ošetření mezery před prvním slovem
+    # Rozdělení textu na slova podle mezer a iterace přes ně
+    for slovo in text.split():
         if not prvni_slovo:
-            vysledek += slovo_mezera  
-        prvni_slovo = False
+            vysledek += slovo_mezera  # Přidá mezeru mezi slovy, pokud to není první slovo
+        prvni_slovo = False # Po zpracování prvního slova nastaví příznak na False
 
-        prvni_znak = True
-        for znak in slovo:  
+        prvni_znak = True # Příznak pro ošetření mezery před prvním znakem ve slově
+        # Iterace přes každý znak v aktuálním slově
+        for znak in slovo:
             if not prvni_znak:
-                vysledek += znak_mezera  
-            prvni_znak = False
+                vysledek += znak_mezera  # Přidá mezeru mezi znaky, pokud to není první znak
+            prvni_znak = False # Po zpracování prvního znaku nastaví příznak na False
 
+            # Získání Morseova kódu pro aktuální znak ze slovníku
+            # Používá metodu .get() s výchozí hodnotou "?" pro znaky, které nejsou ve slovníku
             vysledek += MORSEOVA_ABECEDA.get(znak, "?")
 
-    return vysledek
+    return vysledek # Vrátí výsledný řetězec v Morseově abecedě
 
+# Hlavní část programu
+# Získání vstupu od uživatele
 vstup = input("Zadejte text k převedení do Morseovy abecedy: ")
+# Volání funkce pro převod a výpis výsledku
 print(prevest_na_morseovku(vstup))
 
-prevest_na_morseovku("A B")
-
-slovo=["A","B"]
-print(slovo[0])
+# Následující řádky jsou zřejmě pozůstatkem z testování nebo jiného kódu a nejsou součástí hlavní logiky programu:
+# prevest_na_morseovku("A B") # Volání funkce, ale výsledek se nikam neukládá ani nevypisuje
+# slovo=["A","B"]
+# print(slovo[0])
