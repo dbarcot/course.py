@@ -1,0 +1,40 @@
+<h1 id="priklad-ovoce-zelenina">Příklad: Ovoce a zelenina (CV2_ovoce_a_zelenina_Barcot_1-33.py)</h1>
+<p>Tento program ukazuje, jak pracovat se seznamy, získávat vstup od uživatele a používat podmíněné příkazy (<code>if</code>, <code>elif</code>, <code>else</code>) a cyklus <code>while</code> s příkazem <code>break</code> pro opakované dotazování uživatele.</p>
+<pre><code class="language-python">
+#Domácí úkol 2 - ovoce a zelenina
+# Tento program kontroluje, zda zadané slovo je ovoce nebo zelenina ze seznamů.
+
+# Definice seznamů ovoce a zeleniny
+ovoce = ["jablko","hruska","merunka","tresen"]
+zelenina = ["mrkev","celer","cibule","rajce"]
+
+# Získání prvního vstupu od uživatele
+x = input ("Zadejte ovoce či zeleninu: ")
+
+# Kontrola, zda je vstup v seznamu ovoce nebo zeleniny pomocí if/elif/else
+if x in ovoce: # Kontroluje, zda je hodnota proměnné x v seznamu ovoce
+    print("Zadal jste ovoce.")
+elif x in zelenina: # Pokud není v ovoci, kontroluje, zda je v seznamu zelenina
+    print("Zadal jste zeleninu.")
+else: # Pokud není ani v jednom seznamu
+    print("Toto slovo neznám.")
+
+# Spuštění nekonečného cyklu pro opakované dotazování
+while True:
+    # Získání vstupu, zda chce uživatel pokračovat
+    pokracovat = input ("Chcete zadat nové slovo (a/n)? ")
+    # Kontrola volby uživatele
+    if pokracovat == "a": # Pokud uživatel zadal 'a'
+        # Znovu získáme vstup pro nové slovo
+        x = input ("Zadejte ovoce či zeleninu: ")
+        # Znovu zkontrolujeme zadané slovo
+        if x in ovoce:
+             print("Zadal jste ovoce.")
+        elif x in zelenina:
+             print("Zadal jste zeleninu.")
+        else:
+            print("Toto slovo neznám.")
+    else: # Pokud uživatel nezadal 'a' (předpokládáme, že chce skončit)
+        print("Děkujeme za použití programu")
+        break # Ukončí nekonečný while cyklus
+</code></pre>
