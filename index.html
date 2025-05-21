@@ -125,6 +125,12 @@
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault(); // Prevent default link behavior
+
+                    // Remove 'active' class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Add 'active' class to the clicked link
+                    link.classList.add('active');
+
                     const chapterUrl = link.getAttribute('data-chapter');
                     // Check if the link has a section ID (e.g., #section-id)
                     const urlParts = chapterUrl.split('#');
