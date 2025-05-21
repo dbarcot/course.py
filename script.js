@@ -2,14 +2,51 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Collapsible Navigation ---
-    // Find all elements with the class 'collapsible-toggle'
     const collapsibleToggles = document.querySelectorAll('.collapsible-toggle');
+    const collapsibleLis = document.querySelectorAll('.collapsible');
+    const navLinks = document.querySelectorAll('.navigation-pane a[data-chapter]');
+
+    // Restore expanded sections from localStorage
+    const expandedSections = JSON.parse(localStorage.getItem('tocExpanded') || '[]');
+    expandedSections.forEach(idx => {
+        if (collapsibleLis[idx]) {
+            collapsibleLis[idx].classList.add('expanded');
+        }
+    });
+
+    // Restore selected chapter from localStorage
+    const selectedChapter = localStorage.getItem('selectedChapter');
+    if (selectedChapter) {
+        const selectedLink = document.querySelector(`.navigation-pane a[data-chapter="${selectedChapter}"]`);
+        if (selectedLink) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            selectedLink.classList.add('active');
+            // Load the chapter content
+            if (typeof loadChapterContent === 'function') {
+                document.getElementById('chapter-content').dataset.currentChapter = selectedChapter;
+                loadChapterContent(selectedChapter);
+            }
+        }
+    }
 
     // Add a click event listener to each toggle
-    collapsibleToggles.forEach(toggle => {
+    collapsibleToggles.forEach((toggle, idx) => {
         toggle.addEventListener('click', () => {
-            // Find the parent list item (li) and toggle the 'expanded' class
-            toggle.parentElement.classList.toggle('expanded');
+            const li = toggle.parentElement;
+            li.classList.toggle('expanded');
+            // Save expanded sections
+            const expanded = [];
+            collapsibleLis.forEach((li, i) => {
+                if (li.classList.contains('expanded')) expanded.push(i);
+            });
+            localStorage.setItem('tocExpanded', JSON.stringify(expanded));
+        });
+    });
+
+    // Save selected chapter on click
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            localStorage.setItem('selectedChapter', link.getAttribute('data-chapter'));
         });
     });
 
