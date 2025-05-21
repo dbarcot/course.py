@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Restore selected chapter from localStorage
     const selectedChapter = localStorage.getItem('selectedChapter');
+    let restored = false;
     if (selectedChapter) {
         const selectedLink = document.querySelector(`.navigation-pane a[data-chapter="${selectedChapter}"]`);
         if (selectedLink) {
@@ -25,7 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof loadChapterContent === 'function') {
                 document.getElementById('chapter-content').dataset.currentChapter = selectedChapter;
                 loadChapterContent(selectedChapter);
+                restored = true;
             }
+        }
+    }
+
+    // Only load default chapter if nothing is selected/restored
+    if (!restored) {
+        if (typeof loadChapterContent === 'function') {
+            document.getElementById('chapter-content').dataset.currentChapter = 'kapitola1_uvod.html';
+            loadChapterContent('kapitola1_uvod.html');
         }
     }
 
